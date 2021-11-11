@@ -11,39 +11,43 @@ import Login from "./pages/Login";
 import Logo from "./assets/img/logo-vinted.png";
 
 function App() {
-  const [token, setToken] = useState(Cookies.get("token") || false);
-
+  const [token, setToken] = useState(Cookies.get("token") ? true : false);
   console.log(token);
+
+  const handleDeconnection = () => {
+    Cookies.remove("token");
+    setToken(false);
+  };
 
   return (
     <Router>
-      {/* {token ? (
+      {token ? (
         <header className="app">
           <Link to="/">
             <img src={Logo} alt="Logo Vinted" />
           </Link>
           <div>
-            <button>Se déconnecter</button>
+            <button onClick={handleDeconnection}>Se déconnecter</button>
             <button>Vends maintenant</button>
           </div>
         </header>
-      ) : ( */}
-      <header className="app">
-        <Link to="/">
-          <img src={Logo} alt="Logo Vinted" />
-        </Link>
-        <div>
-          <Link to="/signup">
-            <button>S'incrire</button>
+      ) : (
+        <header className="app">
+          <Link to="/">
+            <img src={Logo} alt="Logo Vinted" />
           </Link>
-          <Link to="/login">
-            <button>Se connecter</button>
-          </Link>
+          <div>
+            <Link to="/signup">
+              <button>S'incrire</button>
+            </Link>
+            <Link to="/login">
+              <button>Se connecter</button>
+            </Link>
 
-          <button>Vends maintenant</button>
-        </div>
-      </header>
-      {/* )} */}
+            <button>Vends maintenant</button>
+          </div>
+        </header>
+      )}
 
       <Routes>
         <Route path="/signup" element={<Signup />} />

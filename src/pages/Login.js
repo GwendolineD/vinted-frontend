@@ -5,8 +5,8 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 // import { useParams } from "react-router";
 
-const Login = ({ setToken }) => {
-  console.log(setToken);
+const Login = () => {
+  //   console.log(setToken);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +28,7 @@ const Login = ({ setToken }) => {
         );
         setLoginData(response.data);
         setIsLoading(false);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.log(error.response);
       }
@@ -37,7 +37,7 @@ const Login = ({ setToken }) => {
     if (isLoading === false) {
       //   console.log(loginData);
       Cookies.set("token", loginData.token, { expires: 4, secure: true });
-      setToken(true);
+      //   setToken(true);
       navigate("/");
     }
   };
