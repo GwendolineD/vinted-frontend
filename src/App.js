@@ -28,7 +28,7 @@ function App() {
           </Link>
           <div>
             <button onClick={handleDeconnection}>Se déconnecter</button>
-            <button>Vends maintenant</button>
+            <button className="headerLastButton">Vends maintenant</button>
           </div>
         </header>
       ) : (
@@ -44,18 +44,14 @@ function App() {
               <button>Se connecter</button>
             </Link>
 
-            <button>Vends maintenant</button>
+            <button className="headerLastButton">Vends maintenant</button>
           </div>
         </header>
       )}
 
       <Routes>
-        <Route path="/signup" element={<Signup />} />
-        {/* <Routes path="/login">
-          <Login setToken={setToken} />
-        </Routes> */}
-        {/* <Route path="/login" children={<Login setToken={setToken} />} /> */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup setToken={setToken} />} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/" element={<Home />} />
         <Route path="/offer/:offerId" element={<Offer />} />
       </Routes>

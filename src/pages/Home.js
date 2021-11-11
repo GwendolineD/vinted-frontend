@@ -26,7 +26,7 @@ const Home = () => {
   }, []);
 
   return isLoading ? (
-    <div>Page is dowloading ...</div>
+    <div className="downloading">Page is dowloading ...</div>
   ) : (
     <div className="app">
       <div className="hero">

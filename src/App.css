@@ -11,7 +11,21 @@ a {
 :root {
   --blueVinted: #2cb1ba;
 }
+h1 {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: bold;
+  margin: 30px 0;
+}
 
+/* DOWLADING */
+.downloading {
+  font-size: 40px;
+  font-family: "Maison Neue Light", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-top: calc((100vh - 200px) / 2);
+}
 /* HEADER */
 header {
   height: 100px;
@@ -29,12 +43,14 @@ header button {
   font-family: inherit;
   border-radius: 5px;
 }
-header button:not(:last-child) {
+header a button,
+header button {
   border: 1px solid var(--blueVinted);
   background: none;
   margin-left: 20px;
 }
-header button:last-child {
+
+.headerLastButton {
   background: var(--blueVinted);
   border: none;
   color: white;
@@ -194,4 +210,96 @@ header button:last-child {
 }
 .signupForm input {
   width: 400px;
+}
+
+/* ---------------------------------------- */
+/* PAGE LOG IN */
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginPage form {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+}
+.loginPage input {
+  border: none;
+  border-bottom: 1px solid #fcced3;
+  background-color: white;
+  margin-top: 20px;
+  font-size: inherit;
+  line-height: 40px;
+  color: #999999;
+}
+.loginPage input[type="submit"] {
+  background-color: var(--blueVinted);
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  font-size: inherit;
+  margin-top: 40px;
+}
+.loginPage p {
+  font-size: 12px;
+  color: var(--blueVinted);
+  margin: 20px 0;
+}
+
+/* ----------------------------------------- */
+/* PAGE SIGN UP */
+.signupPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signupPage form {
+  width: 270px;
+}
+.signupPage form input {
+  width: 100%;
+}
+.signupPage form div {
+  display: flex;
+}
+.signupPage input {
+  border: none;
+  border-bottom: 1px solid #fcced3;
+  background-color: white;
+  margin-top: 20px;
+  font-size: inherit;
+  line-height: 40px;
+  color: #999999;
+}
+.signupPage form div span {
+  font-size: 14px;
+  line-height: 40px;
+  margin-top: 15px;
+  color: #666666;
+  width: 700px;
+}
+.signupPage p {
+  font-size: 12px;
+  margin: 20px 0;
+}
+.signupPage p {
+  color: #999999;
+}
+
+.signupPage input[type="submit"] {
+  background-color: var(--blueVinted);
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  font-size: inherit;
+  margin-top: 30px;
+}
+.signupPage p:last-child {
+  color: var(--blueVinted);
 }

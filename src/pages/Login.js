@@ -5,8 +5,8 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 // import { useParams } from "react-router";
 
-const Login = () => {
-  //   console.log(setToken);
+const Login = ({ setToken }) => {
+  console.log(setToken);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +21,7 @@ const Login = () => {
       try {
         const response = await axios.post(
           "https://lereacteur-vinted-api.herokuapp.com/user/login",
+          //   "https://vintedlereacteur.herokuapp.com/user/login",
           {
             email: email,
             password: password,
@@ -37,13 +38,13 @@ const Login = () => {
     if (isLoading === false) {
       //   console.log(loginData);
       Cookies.set("token", loginData.token, { expires: 4, secure: true });
-      //   setToken(true);
+      setToken(true);
       navigate("/");
     }
   };
 
   return (
-    <div>
+    <div className="app loginPage">
       <h1>Se connecter</h1>
       <form onSubmit={handleLogin}>
         <input

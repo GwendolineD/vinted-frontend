@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({ setToken }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +19,7 @@ const Signup = () => {
       try {
         const response = await axios.post(
           "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+          //   "https://vintedlereacteur.herokuapp.com/user/signup",
           {
             email: email,
             username: name,
@@ -39,12 +40,13 @@ const Signup = () => {
     if (isLoading === false) {
       console.log(signupData.token);
       Cookies.set("token", signupData.token, { expires: 4, secure: true });
+      setToken(true);
       navigate("/");
     }
   };
 
   return (
-    <div>
+    <div className="app signupPage">
       <h1>S'incrire</h1>
       <form className="signupForm" onSubmit={handleSubmit}>
         <input
@@ -71,7 +73,12 @@ const Signup = () => {
           placeholder="Mot de passe"
           value={password}
         />
-        <input type="checkbox" name="S'inscrire à notree newsletter" id="" />
+
+        <div className="checkboxContainer">
+          <input type="checkbox" name="" id="" />
+          <span>S'inscrire à notre newsletter</span>
+        </div>
+
         <p>
           En m'inscrivant, je confirme que j'ai accepté les Termes & Conditions
           de Vinted, avoir lu la Politique de Confidentialité, et que j'ai plus
