@@ -184,3 +184,14 @@ header button:last-child {
   width: 100%;
   color: white;
 }
+
+/* SIGNUP */
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+}
+.signupForm input {
+  width: 400px;
+}

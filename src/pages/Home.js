@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Logo from "../assets/img/logo-vinted.png";
+
 import bandeau from "../assets/img/banner.jpg";
 
 const Home = () => {
@@ -25,19 +25,18 @@ const Home = () => {
     }
   }, []);
 
-  const offerId = "857942542";
   return isLoading ? (
     <div>Page is dowloading ...</div>
   ) : (
     <div className="app">
-      <header>
+      {/* <header>
         <img src={Logo} alt="Logo Vinted" />
         <div>
           <button>S'incrire</button>
           <button>Se connecter</button>
           <button>Vends maintenant</button>
         </div>
-      </header>
+      </header> */}
 
       <div className="hero">
         <img src={bandeau} alt="" />
@@ -76,8 +75,6 @@ const Home = () => {
           );
         })}
       </main>
-
-      <Link to={`/offer/${offerId}`}>go to page offer</Link>
     </div>
   );
 };

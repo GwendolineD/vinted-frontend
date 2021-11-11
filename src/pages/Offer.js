@@ -1,8 +1,7 @@
 import { useParams } from "react-router";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Logo from "../assets/img/logo-vinted.png";
 
 const Offer = () => {
   const { offerId } = useParams();
@@ -29,17 +28,6 @@ const Offer = () => {
     <p>Page is downloading ...</p>
   ) : (
     <div className="app">
-      <header>
-        <Link to="/">
-          <img src={Logo} alt="Logo Vinted" />
-        </Link>
-        <div>
-          <button>S'incrire</button>
-          <button>Se connecter</button>
-          <button>Vends maintenant</button>
-        </div>
-      </header>
-
       <main className="mainOffer">
         <div className="offerPicture">
           <img
