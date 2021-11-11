@@ -1,15 +1,22 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signupData, setSignupData] = useState();
+  const [signupData, setSignupData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    try {
-      const fetchSignupData = async () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const fetchSignupData = async () => {
+      //   console.log("coucou");
+      try {
         const response = await axios.post(
           "https://lereacteur-vinted-api.herokuapp.com/user/signup",
           {
@@ -19,12 +26,20 @@ const Signup = () => {
             password: password,
           }
         );
-        setSignupData(response);
-        console.log(signupData);
-      };
-      fetchSignupData();
-    } catch (error) {
-      console.log(error.message);
+        console.log(response.data);
+        setSignupData(response.data);
+        setIsLoading(false);
+
+        //
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    fetchSignupData();
+    if (isLoading === false) {
+      console.log(signupData.token);
+      Cookies.set("token", signupData.token, { expires: 4, secure: true });
+      navigate("/");
     }
   };
 
@@ -63,8 +78,10 @@ const Signup = () => {
           de 18 ans.
         </p>
         <input type="submit" value="S'inscrire" />
-        <p>Tu as déjà un compte ? Connecte-toi !</p>
       </form>
+      <Link to="/login">
+        <p>Tu as déjà un compte ? Connecte-toi !</p>
+      </Link>
     </div>
   );
 };

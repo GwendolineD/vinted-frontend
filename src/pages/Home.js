@@ -29,15 +29,6 @@ const Home = () => {
     <div>Page is dowloading ...</div>
   ) : (
     <div className="app">
-      {/* <header>
-        <img src={Logo} alt="Logo Vinted" />
-        <div>
-          <button>S'incrire</button>
-          <button>Se connecter</button>
-          <button>Vends maintenant</button>
-        </div>
-      </header> */}
-
       <div className="hero">
         <img src={bandeau} alt="" />
       </div>
@@ -45,8 +36,8 @@ const Home = () => {
       <main className="homeMain">
         {dataOffers.map((offer, index) => {
           return (
-            <div className="homeOffer">
-              <Link key={offer._id} to={`/offer/${offer._id}`}>
+            <div key={offer._id} className="homeOffer">
+              <Link to={`/offer/${offer._id}`}>
                 <div className="homeUser">
                   <img
                     className="homeOwnerAvatar"
