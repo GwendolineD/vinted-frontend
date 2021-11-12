@@ -4,45 +4,36 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const Signup = ({ setToken }) => {
+const Signup = ({ setToken, setUserData }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signupData, setSignupData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const fetchSignupData = async () => {
-      // supprimer cette constante
-      //   console.log("coucou");
-      try {
-        const response = await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-          //   "https://vintedlereacteur.herokuapp.com/user/signup",
-          {
-            email: email,
-            username: name,
-            phone: "0607080910",
-            password: password,
-          }
-        );
-        console.log(response.data);
-        setSignupData(response.data);
-        setIsLoading(false);
 
-        //
-      } catch (error) {
-        console.log(error.response);
-      }
-    };
-    fetchSignupData();
-    if (isLoading === false) {
-      console.log(signupData.token);
-      Cookies.set("token", signupData.token, { expires: 4, secure: true });
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup", //API du reacteur
+        //   "https://vintedlereacteur.herokuapp.com/user/signup",//mon API
+        {
+          email: email,
+          username: name,
+          phone: "0607080910",
+          password: password,
+        }
+      );
+      // console.log(response.data);
+      setUserData(response.data);
+
+      Cookies.set("token", response.data.token, { expires: 4, secure: true });
       setToken(true);
       navigate("/");
+      //
+    } catch (error) {
+      console.log(error.response);
     }
   };
 
