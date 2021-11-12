@@ -11,14 +11,18 @@ import Header from "./components/Header";
 
 function App() {
   const [userData, setUserData] = useState(null);
-  console.log(`userdata ${userData.account.username}`); //nom user connecté
+  // console.log(`userdata ${userData.account.username}`); //nom utilisateur connecté
 
   const [token, setToken] = useState(Cookies.get("token") ? true : false);
   // console.log(token);
 
   return (
     <Router>
-      <Header token={token} setToken={setToken} />
+      <Header
+        token={token}
+        setToken={setToken}
+        username={userData.account.username}
+      />
 
       <Routes>
         <Route

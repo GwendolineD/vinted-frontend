@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 import Logo from "../assets/img/logo-vinted.png";
 
-const Header = ({ token, setToken }) => {
+const Header = ({ token, setToken, username }) => {
   const handleDeconnection = () => {
     Cookies.remove("token");
     setToken(false);
@@ -16,6 +16,9 @@ const Header = ({ token, setToken }) => {
           <Link to="/">
             <img src={Logo} alt="Logo Vinted" />
           </Link>
+          <div style={{ color: "#2cb1ba", fontWeight: "bold" }}>
+            Welcome <span style={{ color: "black" }}>{username}</span> !
+          </div>
           <div>
             <button onClick={handleDeconnection}>Se déconnecter</button>
             <button className="headerLastButton">Vends maintenant</button>
