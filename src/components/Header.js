@@ -3,7 +3,15 @@ import Cookies from "js-cookie";
 
 import Logo from "../assets/img/logo-vinted.png";
 
-const Header = ({ token, setToken, setSearch, setPriceMax, priceMax }) => {
+const Header = ({
+  token,
+  setToken,
+  setSearch,
+  setPriceMax,
+  priceMax,
+  setPriceMin,
+  priceMin,
+}) => {
   const handleDeconnection = () => {
     Cookies.remove("token");
     setToken(false);
@@ -27,12 +35,20 @@ const Header = ({ token, setToken, setSearch, setPriceMax, priceMax }) => {
               id=""
             />
             <div>
+              <span>prix min</span>
+              <input
+                onChange={(event) => {
+                  setPriceMin(event.target.value);
+                }}
+                type="number"
+                value={priceMin}
+              />
+              <span>prix max</span>
               <input
                 onChange={(event) => {
                   setPriceMax(event.target.value);
                 }}
                 type="number"
-                placeholder="prixMax"
                 value={priceMax}
               />
             </div>

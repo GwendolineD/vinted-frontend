@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-// import Offer from "./Offer";
-
 import bandeau from "../assets/img/banner.jpg";
 
-const Home = ({ search, priceMax }) => {
+const Home = ({ search, priceMax, priceMin }) => {
   const [dataOffers, setDataOffers] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -15,7 +13,7 @@ const Home = ({ search, priceMax }) => {
       const fetchDataOffers = async () => {
         const response = await axios.get(
           // `https://vintedlereacteur.herokuapp.com/offers?title=${search}` //mon API
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMax${priceMax}` // l'API du reacteur
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}` // l'API du reacteur
         );
         // setDataOffers(response.data); //avec mon API
         setDataOffers(response.data.offers); // avec l'API du reacteur
@@ -27,7 +25,7 @@ const Home = ({ search, priceMax }) => {
       console.log(error.message);
       console.log(error.response);
     }
-  }, [priceMax, search]);
+  }, [priceMax, search, priceMin]);
 
   return isLoading ? (
     <div className="downloading">Page is dowloading ...</div>

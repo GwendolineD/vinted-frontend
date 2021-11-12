@@ -13,6 +13,7 @@ function App() {
   // const [userData, setUserData] = useState(""); // pose problème à la réouverture de la page, essayer avec des cookies
   const [search, setSearch] = useState("");
   const [priceMax, setPriceMax] = useState(1000);
+  const [priceMin, setPriceMin] = useState(0);
 
   const [token, setToken] = useState(Cookies.get("token") ? true : false);
   // console.log(token);
@@ -25,6 +26,8 @@ function App() {
         setSearch={setSearch}
         setPriceMax={setPriceMax}
         priceMax={priceMax}
+        setPriceMin={setPriceMin}
+        priceMin={priceMin}
       />
 
       <Routes>
@@ -32,7 +35,9 @@ function App() {
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
           path="/"
-          element={<Home search={search} priceMax={priceMax} />}
+          element={
+            <Home search={search} priceMax={priceMax} priceMin={priceMin} />
+          }
         />
         <Route path="/offer/:offerId" element={<Offer />} />
       </Routes>
