@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import bandeau from "../assets/img/banner.jpg";
 
-const Home = ({ search, priceMax, priceMin }) => {
+const Home = ({ search, priceMax, priceMin, sort }) => {
   const [dataOffers, setDataOffers] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,7 +13,7 @@ const Home = ({ search, priceMax, priceMin }) => {
       const fetchDataOffers = async () => {
         const response = await axios.get(
           // `https://vintedlereacteur.herokuapp.com/offers?title=${search}` //mon API
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}` // l'API du reacteur
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}` // l'API du reacteur
         );
         // setDataOffers(response.data); //avec mon API
         setDataOffers(response.data.offers); // avec l'API du reacteur
@@ -25,7 +25,7 @@ const Home = ({ search, priceMax, priceMin }) => {
       console.log(error.message);
       console.log(error.response);
     }
-  }, [priceMax, search, priceMin]);
+  }, [priceMax, search, priceMin, sort]);
 
   return isLoading ? (
     <div className="downloading">Page is dowloading ...</div>

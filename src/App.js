@@ -14,6 +14,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [priceMax, setPriceMax] = useState(1000);
   const [priceMin, setPriceMin] = useState(0);
+  const [sort, setSort] = useState("price-asc");
 
   const [token, setToken] = useState(Cookies.get("token") ? true : false);
   // console.log(token);
@@ -28,6 +29,8 @@ function App() {
         priceMax={priceMax}
         setPriceMin={setPriceMin}
         priceMin={priceMin}
+        setSort={setSort}
+        sort={sort}
       />
 
       <Routes>
@@ -36,7 +39,12 @@ function App() {
         <Route
           path="/"
           element={
-            <Home search={search} priceMax={priceMax} priceMin={priceMin} />
+            <Home
+              search={search}
+              priceMax={priceMax}
+              priceMin={priceMin}
+              sort={sort}
+            />
           }
         />
         <Route path="/offer/:offerId" element={<Offer />} />

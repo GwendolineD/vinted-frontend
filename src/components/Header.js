@@ -11,10 +11,20 @@ const Header = ({
   priceMax,
   setPriceMin,
   priceMin,
+  setSort,
+  sort,
 }) => {
   const handleDeconnection = () => {
     Cookies.remove("token");
     setToken(false);
+  };
+
+  const handleSort = () => {
+    if (sort === "price-asc") {
+      setSort("price-desc");
+    } else {
+      setSort("price-asc");
+    }
   };
 
   return (
@@ -35,6 +45,8 @@ const Header = ({
               id=""
             />
             <div>
+              <span>Trie par prix croissant/décroissant</span>
+              <input onChange={handleSort} type="checkbox" />
               <span>prix min</span>
               <input
                 onChange={(event) => {
