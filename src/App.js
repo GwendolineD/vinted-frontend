@@ -10,8 +10,9 @@ import Login from "./pages/Login";
 import Header from "./components/Header";
 
 function App() {
-  const [userData, setUserData] = useState(null);
-  // console.log(`userdata ${userData.account.username}`); //nom utilisateur connecté
+  // const [userData, setUserData] = useState(""); // pose problème à la réouverture de la page, essayer avec des cookies
+  const [search, setSearch] = useState("");
+  const [priceMax, setPriceMax] = useState(1000);
 
   const [token, setToken] = useState(Cookies.get("token") ? true : false);
   // console.log(token);
@@ -21,19 +22,18 @@ function App() {
       <Header
         token={token}
         setToken={setToken}
-        username={userData.account.username}
+        setSearch={setSearch}
+        setPriceMax={setPriceMax}
+        priceMax={priceMax}
       />
 
       <Routes>
+        <Route path="/signup" element={<Signup setToken={setToken} />} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
         <Route
-          path="/signup"
-          element={<Signup setToken={setToken} setUserData={setUserData} />}
+          path="/"
+          element={<Home search={search} priceMax={priceMax} />}
         />
-        <Route
-          path="/login"
-          element={<Login setToken={setToken} setUserData={setUserData} />}
-        />
-        <Route path="/" element={<Home />} />
         <Route path="/offer/:offerId" element={<Offer />} />
       </Routes>
     </Router>

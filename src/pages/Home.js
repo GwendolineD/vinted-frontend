@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import bandeau from "../assets/img/banner.jpg";
 
-const Home = () => {
+const Home = ({ search, priceMax }) => {
   const [dataOffers, setDataOffers] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,18 +14,20 @@ const Home = () => {
     try {
       const fetchDataOffers = async () => {
         const response = await axios.get(
-          "https://vintedlereacteur.herokuapp.com/offers"
-          // "https://lereacteur-vinted-api.herokuapp.com/offers"
+          // `https://vintedlereacteur.herokuapp.com/offers?title=${search}` //mon API
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMax${priceMax}` // l'API du reacteur
         );
-        setDataOffers(response.data);
+        // setDataOffers(response.data); //avec mon API
+        setDataOffers(response.data.offers); // avec l'API du reacteur
         setIsLoading(false);
-        // console.log(response.data);
+        // console.log(response.data.offers);
       };
       fetchDataOffers();
     } catch (error) {
       console.log(error.message);
+      console.log(error.response);
     }
-  }, []);
+  }, [priceMax, search]);
 
   return isLoading ? (
     <div className="downloading">Page is dowloading ...</div>
@@ -41,11 +43,14 @@ const Home = () => {
             <div key={offer._id} className="homeOffer">
               <Link to={`/offer/${offer._id}`}>
                 <div className="homeUser">
-                  <img
-                    className="homeOwnerAvatar"
-                    src={offer.owner.account.avatar.secure_url}
-                    alt="user avatar"
-                  />
+                  {offer.owner.account.avatar && (
+                    <img
+                      className="homeOwnerAvatar"
+                      src={offer.owner.account.avatar.secure_url}
+                      alt="user avatar"
+                    />
+                  )}
+
                   <p>{offer.owner.account.username}</p>
                 </div>
 

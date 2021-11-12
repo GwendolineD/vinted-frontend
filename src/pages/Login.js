@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 // import { useParams } from "react-router";
 
-const Login = ({ setToken, setUserData }) => {
+const Login = ({ setToken }) => {
   // console.log(setToken);s
 
   const [email, setEmail] = useState("");
@@ -27,7 +27,7 @@ const Login = ({ setToken, setUserData }) => {
         }
       );
       // console.log(response.data);
-      setUserData(response.data);
+      // setUserData(response.data);// pose problème à la réouverture de la page, essayer avec des cookies
 
       Cookies.set("token", response.data.token, { expires: 4, secure: true });
       setToken(true);

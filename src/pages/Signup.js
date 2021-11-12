@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const Signup = ({ setToken, setUserData }) => {
+const Signup = ({ setToken }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ const Signup = ({ setToken, setUserData }) => {
         }
       );
       // console.log(response.data);
-      setUserData(response.data);
+      // setUserData(response.data);// pose problème à la réouverture de la page, essayer avec des cookies
 
       Cookies.set("token", response.data.token, { expires: 4, secure: true });
       setToken(true);
