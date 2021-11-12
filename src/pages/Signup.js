@@ -15,6 +15,7 @@ const Signup = ({ setToken }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const fetchSignupData = async () => {
+      // supprimer cette constante
       //   console.log("coucou");
       try {
         const response = await axios.post(
@@ -85,6 +86,7 @@ const Signup = ({ setToken }) => {
           de 18 ans.
         </p>
         <input type="submit" value="S'inscrire" />
+        {/* ou boutton de type submit */}
       </form>
       <Link to="/login">
         <p>Tu as déjà un compte ? Connecte-toi !</p>

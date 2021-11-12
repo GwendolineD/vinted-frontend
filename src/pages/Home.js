@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+// import Offer from "./Offer";
+
 import bandeau from "../assets/img/banner.jpg";
 
 const Home = () => {
