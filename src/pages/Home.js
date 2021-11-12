@@ -12,13 +12,14 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
     try {
       const fetchDataOffers = async () => {
         const response = await axios.get(
-          // `https://vintedlereacteur.herokuapp.com/offers?title=${search}` //mon API
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}` // l'API du reacteur
+          // `https://vintedlereacteur.herokuapp.com/offers?title=pa&sort=price_desc`// test avec query en dur
+          `https://vintedlereacteur.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}` //mon API
+          // `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}` // l'API du reacteur
         );
-        // setDataOffers(response.data); //avec mon API
-        setDataOffers(response.data.offers); // avec l'API du reacteur
+        setDataOffers(response.data); //avec mon API
+        // setDataOffers(response.data.offers); // avec l'API du reacteur
         setIsLoading(false);
-        // console.log(response.data.offers);
+        console.log(response.data);
       };
       fetchDataOffers();
     } catch (error) {

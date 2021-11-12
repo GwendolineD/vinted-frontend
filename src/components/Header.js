@@ -46,7 +46,12 @@ const Header = ({
             />
             <div>
               <span>Trie par prix croissant/décroissant</span>
-              <input onChange={handleSort} type="checkbox" />
+              {sort === "price-asc" ? (
+                <input onChange={handleSort} type="checkbox" checked />
+              ) : (
+                <input onChange={handleSort} type="checkbox" />
+              )}
+
               <span>prix min</span>
               <input
                 onChange={(event) => {
