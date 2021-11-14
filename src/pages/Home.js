@@ -9,10 +9,18 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    let sortChoice = "price_asc";
+    if (!sort) {
+      sortChoice = "price_desc";
+    }
+    // } else {
+    //   sortChoice = "price_asc";
+    // }
+
     try {
       const fetchDataOffers = async () => {
         const response = await axios.get(
-          `https://vintedlereacteur.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}` //mon API
+          `https://vintedlereacteur.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sortChoice}` //mon API
           // `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}` // l'API du reacteur
         );
         setDataOffers(response.data); //avec mon API
