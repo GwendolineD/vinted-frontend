@@ -14,7 +14,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [priceMax, setPriceMax] = useState(1000);
   const [priceMin, setPriceMin] = useState(0);
-  const [sort, setSort] = useState("price-asc");
+  const [sort, setSort] = useState("price_asc");
 
   const [token, setToken] = useState(Cookies.get("token") ? true : false);
   // console.log(token);

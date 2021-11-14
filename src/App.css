@@ -34,6 +34,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #999999;
 }
 
 header button {
@@ -53,9 +54,43 @@ header button {
 .headerLastButton {
   background: var(--blueVinted);
   border: none;
+  width: 120px;
   color: white;
   margin-left: 60px;
   margin-right: 10px;
+}
+header input[type="search"] {
+  width: 620px;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: inherit;
+  color: #999999;
+  background-color: #f5f6f7;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+header span {
+  font-size: 12px;
+  margin-right: 10px;
+}
+.prixEntre {
+  margin-left: 50px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0px;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  width: 40px;
+  margin-right: 10px;
+  padding: 3px;
+  border: none;
+  border-radius: 3px;
+  background-color: #f5f6f7;
 }
 /* ---------------------------------------------- */
 /* HOME PAGE - HERO */
@@ -118,18 +153,22 @@ header button {
   display: flex;
   justify-content: center;
   background-color: #ebedee;
-  padding: 30px 0;
-  height: calc(100vh - 100px);
+  /* padding: 30px 0; */
+  height: 100vh;
+  align-items: center;
 }
 /* OFFER PAGE - photo */
 .offerPicture {
   /* flex: 2; */
-  height: 600px;
+  /* max-height: 500px;
+  max-width: 500px; */
   display: flex;
   justify-content: center;
 }
 .offerPicture img {
-  height: 100%;
+  max-height: 500px;
+  max-width: 500px;
+  object-fit: contain;
 }
 
 /* OFFER PAGE - ASIDE */
@@ -139,7 +178,8 @@ header button {
   width: 400px;
   background-color: #fff;
   margin-left: 100px;
-  padding: 40px;
+  padding: 30px;
+  box-sizing: border-box;
 }
 /* aside - firstpart */
 .offerAsideFirstpart {
@@ -168,7 +208,8 @@ header button {
 
 /* aside - secondpart */
 .offerAsideSecondpart {
-  padding: 50px 0;
+  padding-top: 50px;
+  margin-bottom: 30px;
   line-height: 20px;
 }
 .offerAsideSecondpart p:nth-child(2) {

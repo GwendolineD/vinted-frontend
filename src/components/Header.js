@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import Logo from "../assets/img/logo-vinted.png";
+import Filter from "./Filter";
 
 const Header = ({
   token,
@@ -19,14 +20,6 @@ const Header = ({
     setToken(false);
   };
 
-  const handleSort = () => {
-    if (sort === "price-asc") {
-      setSort("price-desc");
-    } else {
-      setSort("price-asc");
-    }
-  };
-
   return (
     <div>
       {token ? (
@@ -34,42 +27,15 @@ const Header = ({
           <Link to="/">
             <img src={Logo} alt="Logo Vinted" />
           </Link>
-          <div>
-            <input
-              onChange={(event) => {
-                setSearch(event.target.value);
-              }}
-              type="search"
-              placeholder="Recherche"
-              name=""
-              id=""
-            />
-            <div>
-              <span>Trie par prix croissant/décroissant</span>
-              {sort === "price-asc" ? (
-                <input onChange={handleSort} type="checkbox" checked />
-              ) : (
-                <input onChange={handleSort} type="checkbox" />
-              )}
-
-              <span>prix min</span>
-              <input
-                onChange={(event) => {
-                  setPriceMin(event.target.value);
-                }}
-                type="number"
-                value={priceMin}
-              />
-              <span>prix max</span>
-              <input
-                onChange={(event) => {
-                  setPriceMax(event.target.value);
-                }}
-                type="number"
-                value={priceMax}
-              />
-            </div>
-          </div>
+          <Filter
+            setSearch={setSearch}
+            setPriceMax={setPriceMax}
+            priceMax={priceMax}
+            setPriceMin={setPriceMin}
+            priceMin={priceMin}
+            setSort={setSort}
+            sort={sort}
+          />
 
           {/* {userData && (
             <div style={{ color: "#2cb1ba", fontWeight: "bold" }}>
@@ -91,6 +57,15 @@ const Header = ({
           <Link to="/">
             <img src={Logo} alt="Logo Vinted" />
           </Link>
+          <Filter
+            setSearch={setSearch}
+            setPriceMax={setPriceMax}
+            priceMax={priceMax}
+            setPriceMin={setPriceMin}
+            priceMin={priceMin}
+            setSort={setSort}
+            sort={sort}
+          />
           <div>
             <Link to="/signup">
               <button>S'incrire</button>

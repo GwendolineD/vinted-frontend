@@ -16,8 +16,8 @@ const Signup = ({ setToken }) => {
 
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup", //API du reacteur
-        //   "https://vintedlereacteur.herokuapp.com/user/signup",//mon API
+        // "https://lereacteur-vinted-api.herokuapp.com/user/signup", //API du reacteur
+        "https://vintedlereacteur.herokuapp.com/user/signup", //mon API
         {
           email: email,
           username: name,
