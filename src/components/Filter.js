@@ -7,16 +7,8 @@ const Filter = ({
   setSort,
   sort,
 }) => {
-  const handleSort = () => {
-    // if (sort === "price_asc") {
-    //   setSort("price_desc");
-    // } else {
-    //   setSort("price_asc");
-    // }
-    setSort(!sort);
-  };
   return (
-    <div>
+    <div className="headerElement">
       <input
         onChange={(event) => {
           setSearch(event.target.value);
@@ -26,17 +18,17 @@ const Filter = ({
         name=""
         id=""
       />
-      <div>
+
+      <div className="toggleAndText">
         <span>Trier par prix </span>
-        {/* {sort ? (
-          <input onChange={handleSort} type="checkbox" checked />
-        ) : (
-          <input onChange={handleSort} type="checkbox" />
-        )} */}
-        {/* <input onChange={handleSort} type="checkbox" checked={sort} /> */}
-        {/* test toogle */}
         <label className="toggleSwitch">
-          <input onChange={handleSort} type="checkbox" checked={sort} />
+          <input
+            onChange={() => {
+              setSort(!sort);
+            }}
+            type="checkbox"
+            checked={sort}
+          />
           <span className="switch" />
         </label>
 

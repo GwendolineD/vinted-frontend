@@ -31,7 +31,7 @@ const Offer = () => {
       <main className="mainOffer">
         <div className="offerPicture">
           <img
-            src={dataOffer.product_image.secure_url}
+            src={dataOffer.product_image.picture.secure_url}
             alt="produit à vendre"
           />
         </div>
@@ -60,11 +60,15 @@ const Offer = () => {
             <p>{dataOffer.product_name}</p>
             <p>{dataOffer.product_description}</p>
             <div className="offerOwner">
-              <img
-                className="offerOwnerAvatar"
-                src={dataOffer.owner.account.avatar.secure_url}
-                alt="user avatar"
-              />
+              {dataOffer.owner.account.avatar === undefined ? (
+                <span></span>
+              ) : (
+                <img
+                  className="offerOwnerAvatar"
+                  src={dataOffer.owner.account.avatar.secure_url}
+                  alt="user avatar"
+                />
+              )}
               <span>{dataOffer.owner.account.username}</span>
             </div>
           </div>

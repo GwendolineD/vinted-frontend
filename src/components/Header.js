@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 import Logo from "../assets/img/logo-vinted.png";
 import Filter from "./Filter";
@@ -15,9 +16,21 @@ const Header = ({
   setSort,
   sort,
 }) => {
+  const navigate = useNavigate();
+
   const handleDeconnection = () => {
     Cookies.remove("token");
     setToken(false);
+    navigate("/");
+  };
+  const isToken = Cookies.get("token");
+  console.log(isToken);
+  const handleSellNow = () => {
+    if (isToken) {
+      navigate("/publish");
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
@@ -49,12 +62,14 @@ const Header = ({
 
           <div>
             <button onClick={handleDeconnection}>Se déconnecter</button>
-            <button className="headerLastButton">Vends maintenant</button>
+            <button onClick={handleSellNow} className="headerLastButton">
+              Vends maintenant
+            </button>
           </div>
         </header>
       ) : (
         <header className="app">
-          <Link to="/">
+          <Link to="/" className="headerElement">
             <img src={Logo} alt="Logo Vinted" />
           </Link>
           <Filter
@@ -66,7 +81,7 @@ const Header = ({
             setSort={setSort}
             sort={sort}
           />
-          <div>
+          <div className="headerElement">
             <Link to="/signup">
               <button>S'incrire</button>
             </Link>
@@ -74,7 +89,9 @@ const Header = ({
               <button>Se connecter</button>
             </Link>
 
-            <button className="headerLastButton">Vends maintenant</button>
+            <button onClick={handleSellNow} className="headerLastButton">
+              Vends maintenant
+            </button>
           </div>
         </header>
       )}
