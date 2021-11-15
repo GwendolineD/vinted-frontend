@@ -402,6 +402,9 @@ input[type="number"] {
   /* flex-direction: column; */
   margin: 20px 0;
 }
+.dropZone {
+  background-color: pink;
+}
 
 /* ------------------------------------------------------- */
 /* MEDIA QUERIES */
