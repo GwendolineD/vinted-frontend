@@ -61,7 +61,9 @@ const Header = ({
           )} // pose problème à la réouverture de la page, essayer avec des cookies*/}
 
           <div>
-            <button onClick={handleDeconnection}>Se déconnecter</button>
+            <button onClick={handleDeconnection} className="deconnect">
+              Se déconnecter
+            </button>
             <button onClick={handleSellNow} className="headerLastButton">
               Vends maintenant
             </button>

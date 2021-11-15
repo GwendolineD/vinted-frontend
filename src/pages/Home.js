@@ -62,7 +62,7 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
 
                 <img
                   className="homeProductPicture"
-                  src={offer.product_image.secure_url}
+                  src={offer.product_image.picture.secure_url}
                   alt="produit à vendre"
                 />
                 <p>{offer.product_price} €</p>

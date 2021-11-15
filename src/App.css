@@ -59,6 +59,11 @@ header button {
   margin-left: 60px;
   margin-right: 10px;
 }
+.deconnect {
+  background-color: #c2175b;
+  border: none;
+  color: white;
+}
 header input[type="search"] {
   width: 500px;
   border: none;

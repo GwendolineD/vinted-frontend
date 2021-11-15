@@ -2,8 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-
-import photo from "../assets/img/photo.jpg";
+// import React, { useCallback } from "react";
+// import { useDropzone } from "react-dropzone";
 
 const Publish = () => {
   const [title, setTitle] = useState("");
@@ -16,10 +16,30 @@ const Publish = () => {
   const [price, setPrice] = useState(0);
   const [picture, setPicture] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [preview, setPreview] = useState(null);
 
   const navigate = useNavigate();
-
   const token = Cookies.get("token");
+
+  /* const onDrop = useCallback((acceptedFiles) => {
+    acceptedFiles.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onabort = () => console.log("file reading was aborted");
+      reader.onerror = () => console.log("file reading has failed");
+      reader.onload = () => {
+        // Do whatever you want with the fille contents
+        console.log("file >>>>", file);
+        setPreview(URL.createObjectURL(file)
+        setPicture(file);
+        // URL.createObjectURL(file);
+        const binaryStr = reader.result;
+        console.log(binaryStr);
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop }); */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -63,12 +83,28 @@ const Publish = () => {
         <div>
           <input
             onChange={(event) => {
+              console.log("file >>>", event.target.files[0]);
               setPicture(event.target.files[0]);
+              setPreview(URL.createObjectURL(event.target.files[0]));
+              console.log("preview>>>", preview);
             }}
             type="file"
           />
+          {preview && <img src={preview} alt="preview" />}
         </div>
+        {/* dropzone */}
+        {/* <div className="dropZone" {...getRootProps()}>
+          <input type="file" {...getInputProps()} />
+          {isDragActive ? (
+            <p>Drop the files here ...</p>
+          ) : (
+            <p>Drag 'n' drop some files here, or click to select files</p>
+          )}
+          {picture && <p>picture uploaded !</p>}
+          {preview && <img src={preview} alt="preview" />}
+        </div> */}
 
+        {/* reste formulaire */}
         <div>
           <div>
             <span>Titre</span>
