@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import Logo from "../assets/img/logo-vinted.png";
 import Filter from "./Filter";
@@ -23,6 +23,7 @@ const Header = ({
     setToken(false);
     navigate("/");
   };
+
   const isToken = Cookies.get("token");
   console.log(isToken);
   const handleSellNow = () => {

@@ -1,12 +1,27 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
 import bandeau from "../assets/img/banner.jpg";
+import dechirement from "../assets/img/dechirement.svg";
 
 const Home = ({ search, priceMax, priceMin, sort }) => {
   const [dataOffers, setDataOffers] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
+
+  const isToken = Cookies.get("token");
+  console.log(isToken);
+  const handleSellNow = () => {
+    if (isToken) {
+      navigate("/publish");
+    } else {
+      navigate("/login");
+    }
+  };
 
   useEffect(() => {
     let sortChoice = "price_asc";
@@ -40,7 +55,17 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
   ) : (
     <div className="app">
       <div className="hero">
-        <img src={bandeau} alt="" />
+        <div className="rectangle">
+          <h1>Prêts à faire du tri dans vos placards ?</h1>
+          <button onClick={handleSellNow}>Commencer à vendre</button>
+        </div>
+        <img
+          className="bandeau"
+          src={bandeau}
+          alt="femme en train de choisir un vêtement"
+        />
+
+        <img className="effet" src={dechirement} alt="effet déchiré" />
       </div>
 
       <main className="homeMain">

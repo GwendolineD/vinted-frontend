@@ -75,108 +75,121 @@ const Publish = () => {
   };
 
   return (
-    <div className="publishPage">
-      <h2>Vends ton article</h2>
-      <form onSubmit={handleSubmit}>
-        {/* dropzone */}
-        <div className="dropZone" {...getRootProps()}>
-          <input type="file" {...getInputProps()} />
-          {isDragActive ? (
-            <p>Drop the files here ...</p>
-          ) : (
-            <p>Drag 'n' drop some files here, or click to select files</p>
-          )}
-          {preview && <img src={preview} alt="preview" />}
-        </div>
+    <div className="publishPage app">
+      <div className="container">
+        <h2>Vends ton article</h2>
+        <form onSubmit={handleSubmit}>
+          {/* dropzone */}
+          <div className="dropZone" {...getRootProps()}>
+            <input type="file" {...getInputProps()} />
+            {isDragActive ? (
+              <p>Drop the files here ...</p>
+            ) : (
+              <p>Drag 'n' drop some files here, or click to select files</p>
+            )}
+            {preview && (
+              <img
+                onClick={() => {
+                  setPreview(null);
+                }}
+                src={preview}
+                alt="preview"
+              />
+            )}
+          </div>
 
-        {/* reste formulaire */}
-        <div>
+          {/* reste formulaire */}
           <div>
-            <span>Titre</span>
-            <input
-              onChange={(event) => setTitle(event.target.value)}
-              type="text"
-              placeholder="ex: Chemise Sézane verte"
-            />
+            <div>
+              <span>Titre</span>
+              <input
+                onChange={(event) => setTitle(event.target.value)}
+                type="textarea"
+                placeholder="ex: Chemise Sézane verte"
+              />
+            </div>
+
+            <div>
+              <span>Décris ton article</span>
+              <input
+                onChange={(event) => setDescription(event.target.value)}
+                type="text"
+                placeholder="ex: porté quelques fois, taille correctement"
+              />
+            </div>
           </div>
 
           <div>
-            <span>Décris ton article</span>
-            <input
-              onChange={(event) => setDescription(event.target.value)}
-              type="text"
-              placeholder="ex: porté quelques fois, taille correctement"
-            />
-          </div>
-        </div>
+            <div>
+              <span>Marque</span>
+              <input
+                onChange={(event) => setBrand(event.target.value)}
+                type="text"
+                placeholder="ex: Zara"
+              />
+            </div>
 
-        <div>
-          <div>
-            <span>Marque</span>
-            <input
-              onChange={(event) => setBrand(event.target.value)}
-              type="text"
-              placeholder="ex: Zara"
-            />
-          </div>
+            <div>
+              <span>Taille</span>
+              <input
+                onChange={(event) => setSize(event.target.value)}
+                type="text"
+                placeholder="ex: L / 40 / 12"
+              />
+            </div>
 
-          <div>
-            <span>Taille</span>
-            <input
-              onChange={(event) => setSize(event.target.value)}
-              type="text"
-              placeholder="ex: L / 40 / 12"
-            />
-          </div>
+            <div>
+              <span>Couleur</span>
+              <input
+                onChange={(event) => setColor(event.target.value)}
+                type="text"
+                placeholder="ex: Fushia"
+              />
+            </div>
 
-          <div>
-            <span>Couleur</span>
-            <input
-              onChange={(event) => setColor(event.target.value)}
-              type="text"
-              placeholder="ex: Fushia"
-            />
-          </div>
+            <div>
+              <span>Etat</span>
+              <input
+                onChange={(event) => setCondition(event.target.value)}
+                type="text"
+                placeholder="ex: Neuf avec étiquette"
+              />
+            </div>
 
-          <div>
-            <span>Etat</span>
-            <input
-              onChange={(event) => setCondition(event.target.value)}
-              type="text"
-              placeholder="ex: Neuf avec étiquette"
-            />
-          </div>
-
-          <div>
-            <span>Lieu</span>
-            <input
-              onChange={(event) => setCity(event.target.value)}
-              type="text"
-              placeholder="ex: Paris"
-            />
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span>Prix</span>
-            <input
-              onChange={(event) => {
-                setPrice(Number(event.target.value));
-              }}
-              type="number"
-              placeholder="2,5"
-            />
+            <div>
+              <span>Lieu</span>
+              <input
+                onChange={(event) => setCity(event.target.value)}
+                type="text"
+                placeholder="ex: Paris"
+              />
+            </div>
           </div>
 
           <div>
-            <input type="checkbox" name="" id="" />
-            <span>Je suis intéressé(e) par les échanges</span>
+            <div>
+              <span>Prix</span>
+              <input
+                onChange={(event) => {
+                  setPrice(Number(event.target.value));
+                }}
+                type="number"
+                placeholder="2,5"
+              />
+            </div>
+
+            <div>
+              <input className="exchange" type="checkbox" name="" id="" />
+              <span>Je suis intéressé(e) par les échanges</span>
+            </div>
           </div>
-        </div>
-        {isLoading && <span>offer is uploading ...</span>}
-        <input type="submit" value="Ajouter" />
-      </form>
+
+          <div>
+            {isLoading && <span>offer is uploading ...</span>}
+            <input type="submit" value="Ajouter" />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
