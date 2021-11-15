@@ -17,8 +17,6 @@ const Publish = () => {
   const [picture, setPicture] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(picture);
-
   const navigate = useNavigate();
 
   const token = Cookies.get("token");
@@ -69,11 +67,6 @@ const Publish = () => {
             }}
             type="file"
           />
-          {picture ? (
-            <img src={picture} alt="Votre produit" />
-          ) : (
-            <img src={photo} alt="appareil" />
-          )}
         </div>
 
         <div>
