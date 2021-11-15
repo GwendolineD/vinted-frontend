@@ -3,6 +3,8 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
+import photo from "../assets/img/photo.jpg";
+
 const Publish = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -12,7 +14,10 @@ const Publish = () => {
   const [color, setColor] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState(0);
-  const [picture, setPicture] = useState({});
+  const [picture, setPicture] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  console.log(picture);
 
   const navigate = useNavigate();
 
@@ -21,6 +26,7 @@ const Publish = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setIsLoading(true);
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
@@ -33,7 +39,6 @@ const Publish = () => {
       formData.append("picture", picture);
 
       const response = await axios.post(
-        // "https://lereacteur-vinted-api.herokuapp.com/offer/publish", // API du recteur
         "https://vintedlereacteur.herokuapp.com/offer/publish", // mon API
         formData,
         {
@@ -44,6 +49,7 @@ const Publish = () => {
       );
       console.log(response.data);
       if (response.data) {
+        setIsLoading(false);
         navigate(`/offer/${response.data._id}`);
       }
     } catch (error) {
@@ -63,6 +69,11 @@ const Publish = () => {
             }}
             type="file"
           />
+          {picture ? (
+            <img src={picture} alt="Votre produit" />
+          ) : (
+            <img src={photo} alt="appareil" />
+          )}
         </div>
 
         <div>
@@ -149,6 +160,7 @@ const Publish = () => {
             <span>Je suis intéressé(e) par les échanges</span>
           </div>
         </div>
+        {isLoading && <span>offer is uploading ...</span>}
         <input type="submit" value="Ajouter" />
       </form>
     </div>

@@ -388,6 +388,10 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
 }
+.publishPage img {
+  height: 50px;
+  width: 50px;
+}
 .publishPage form > div {
   /* display: flex; */
   /* flex-direction: column; */
