@@ -495,7 +495,8 @@ input[type="number"] {
   padding: 5px 10px;
 }
 .publishPage form > div:last-child {
-  margin-top: 50px;
+  margin-top: 40px;
+  font-size: 18px;
   display: flex;
   justify-content: flex-end;
 }
@@ -508,6 +509,74 @@ input[type="number"] {
 .exchange {
   margin-left: 340px;
   transform: scale(0.5);
+}
+/* ------------------------------------------------ */
+/* PAYMENT PAGE */
+.paymentPage {
+  background-color: #ebedee;
+  height: 100vh;
+  padding-top: 50px;
+}
+.commande {
+  /* height: 600px; */
+  width: 500px;
+  margin: auto;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 25px;
+}
+.commande h4 {
+  font-size: 14px;
+  color: #999999;
+  margin-bottom: 30px;
+}
+.recap {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 15px;
+  color: #999999;
+  display: flex;
+  justify-content: space-between;
+}
+.recap:nth-child(4) {
+  margin-bottom: 50px;
+}
+.commande form {
+  border-top: 1px solid lightgrey;
+  padding-top: 40px;
+}
+
+.totalPayment {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.commande form p {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid lightgrey;
+  text-align: center;
+}
+.commande form p span {
+  font-weight: bold;
+}
+.cardElement {
+  border: 1px solid rgb(241, 238, 238);
+  border-radius: 3px;
+  padding: 10px;
+}
+.commande form input[type="submit"] {
+  background-color: #02c06d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+  width: 100%;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: inherit;
+  margin-top: 30px;
 }
 
 /* ------------------------------------------------------- */

@@ -43,37 +43,39 @@ const CheckoutForm = ({ dataOffer }) => {
   };
 
   return paymentOK ? (
-    <>
+    <div>
       <div>
         Votre paiement de {total} € pour l'achat de {dataOffer.product_name} a
         été effectué avec succès!
       </div>
       <Link to="/">Revenir aux offres</Link>
-    </>
+    </div>
   ) : (
-    <div>
-      <h4>Résumé de la commande</h4>
-      <div>
-        <span>Commande</span> <span>{dataOffer.product_price} €</span>
-      </div>
-      <div>
-        <span>Frais protection acheteurs</span> <span>0.40 €</span>
-      </div>
-      <div>
-        <span>Frais de port</span> <span>0.80 €</span>
-      </div>
-      <form onSubmit={handleSubmit} className="app">
-        <div>
-          <span>Total</span> <span>{total} €</span>
+    <div className=" paymentPage app">
+      <div className="commande">
+        <h4>Résumé de la commande</h4>
+        <div className="recap">
+          <span>Commande</span> <span>{dataOffer.product_price} €</span>
         </div>
-        <p>
-          Il ne vous reste plus qu'une étape pour vous offrir
-          <span>{dataOffer.product_name}</span>. Vous allez payer{" "}
-          <span>{total} €</span> (frais de protection et frais de port inclus)
-        </p>
-        <CardElement />
-        <input type="submit" value="Pay" />
-      </form>
+        <div className="recap">
+          <span>Frais protection acheteurs</span> <span>0.40 €</span>
+        </div>
+        <div className="recap">
+          <span>Frais de port</span> <span>0.80 €</span>
+        </div>
+        <form onSubmit={handleSubmit} className="app">
+          <div className="totalPayment">
+            <span>Total</span> <span>{total} €</span>
+          </div>
+          <p>
+            Il ne vous reste plus qu'une étape pour vous offrir{" "}
+            <span>{dataOffer.product_name}</span>. Vous allez payer{" "}
+            <span>{total} €</span> (frais de protection et frais de port inclus)
+          </p>
+          <CardElement className="cardElement" />
+          <input type="submit" value="Pay" />
+        </form>
+      </div>
     </div>
   );
 };
