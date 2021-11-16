@@ -21,7 +21,7 @@ h1 {
   margin: 30px 0;
 }
 .container {
-  width: 1250px;
+  max-width: 1250px;
   margin: auto;
 }
 
@@ -254,7 +254,6 @@ input[type="number"] {
 
 /* OFFER PAGE - aside */
 .offerAside {
-  /* height: 500px; */
   width: 400px;
   background-color: #fff;
   margin-left: 100px;
@@ -429,7 +428,7 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   background-color: #ebedee;
-  height: 100vh;
+  /* height: 100vh; */
 }
 .publishPage h2 {
   margin-top: 40px;
@@ -644,24 +643,59 @@ input[type="number"] {
   /* ---------- */
   /* 820 > 1130px --- OFFER PAGE  */
   .mainOffer {
-    /* display: flex;
-  justify-content: center; */
-    /* background-color: #ebedee; */
     height: 100vh;
-    /* align-items: center; */
   }
 
   /* 820 > 1130px --- OFFER PAGE - photo */
-
   .offerPicture img {
     max-height: 450px;
     max-width: 450px;
   }
-}
-/* 820 > 1130px --- OFFER PAGE - aside */
-.offerAside {
-  width: 350px;
-  margin-left: 50px;
+
+  /* 820 > 1130px --- OFFER PAGE - aside */
+  .offerAside {
+    width: 350px;
+    margin-left: 50px;
+  }
+
+  /* ----------------- */
+  /* 820 > 1130px --- PUBLISH PAGE */
+  .container {
+    width: calc(100vw - 80px);
+    margin: auto;
+  }
+  .publishPage h2 {
+    font-size: 20px;
+  }
+  .publishPage form > div:not(:last-child) {
+    padding: 10px 20px;
+  }
+  .publishPage form > div > div input {
+    width: 350px;
+    height: 35px;
+  }
+  .textarea {
+    width: 370px;
+  }
+  .publishPage form > div:first-child {
+    height: 200px;
+    padding: 15px;
+    justify-content: spa/ce-around;
+  }
+  .publishPage img {
+    height: 180px;
+    width: 130px;
+  }
+  .publishPage input[type="submit"] {
+    font-size: 15px;
+  }
+  .exchange {
+    margin-left: 270px;
+  }
+  .exchangeText {
+    font-size: 12px;
+    width: 400px;
+  }
 }
 
 /* -------------------------------------- */
@@ -725,7 +759,6 @@ input[type="number"] {
   }
 
   /* ------------ */
-
   /* max 819 px --- OFFER PAGE */
   .mainOffer {
     display: flex;
@@ -779,75 +812,49 @@ input[type="number"] {
 
   /* ------------ */
   /* max 819px --- PAYMENT PAGE */
-  /* .paymentPage {
-    background-color: #ebedee;
-    height: 100vh;
-    padding-top: 50px;
-  } */
-  .commande {
-    /* height: 600px; */
-    width: 380px;
-    /* margin: auto; */
-    /* border-radius: 5px; */
-    /* background-color: #fff; */
-    /* padding: 25px; */
-  }
-  /* .commande h4 {
-    font-size: 14px;
-    color: #999999;
-    margin-bottom: 30px;
-  } */
-  /* .recap {
-    font-size: 16px;
-    line-height: 20px;
-    margin-bottom: 15px;
-    color: #999999;
-    display: flex;
-    justify-content: space-between;
-  } */
-  /* .recap:nth-child(4) {
-    margin-bottom: 50px;
-  }
-  .commande form {
-    border-top: 1px solid lightgrey;
-    padding-top: 40px;
-  }
 
-  .totalPayment {
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 50px;
-  } */
+  .commande {
+    width: 380px;
+  }
   .commande form p {
     font-size: 14px;
-    /* margin-bottom: 30px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid lightgrey;
-    text-align: center; */
   }
-  /*.commande form p span {
-    font-weight: bold;
+
+  /* ----------------- */
+  /* max 819px --- PUBLISH PAGE */
+  .container {
+    width: calc(100vw - 80px);
+    margin: auto;
   }
-  .cardElement {
-    border: 1px solid rgb(241, 238, 238);
-    border-radius: 3px;
-    padding: 10px;
+  .publishPage form > div > div input {
+    width: 280px;
+    height: 30px;
   }
-  .commande form input[type="submit"] {
-    background-color: #02c06d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 0;
-    width: 100%;
-    font-family: inherit;
-    font-weight: bold;
-    font-size: inherit;
-    margin-top: 30px;
-  } */
+  .textarea {
+    width: 300px;
+  }
+  .publishPage form > div:first-child {
+    height: 200px;
+    padding: 15px;
+    justify-content: spa/ce-around;
+  }
+  .publishPage img {
+    height: 180px;
+    width: 130px;
+  }
+  .publishPage input[type="submit"] {
+    font-size: 15px;
+  }
+  .exchange {
+    margin-left: 80px;
+  }
+  .exchangeText {
+    font-size: 12px;
+    width: 450px;
+  }
 }
 /* ---------------------------------------------- */
+
 @media (max-width: 516px) {
   /* max 516px --- HEADER */
   header {
@@ -925,6 +932,53 @@ input[type="number"] {
   .commande form p {
     font-size: 12px;
     padding-bottom: 20px;
+  }
+  /* ------------------ */
+  /* max 516px --- PUBLISH PAGE */
+  .container {
+    width: calc(100vw - 80px);
+    margin: auto;
+  }
+  .publishPage h4 {
+    font-size: 18px;
+  }
+  .publishPage form > div > div {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+
+  .publishPage form > div > div input {
+    font-size: 14px;
+    width: 300px;
+    height: 30px;
+  }
+  .textarea {
+    width: 370px;
+  }
+  .publishPage form > div:first-child {
+    height: 200px;
+    padding: 15px;
+    font-size: 14px;
+    justify-content: space-around;
+  }
+  .publishPage img {
+    height: 180px;
+    width: 130px;
+  }
+  .publishPage input[type="submit"] {
+    font-size: 15px;
+  }
+
+  .exchange {
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  .exchangeText {
+    font-size: 10px;
+    width: 200px;
+    margin: auto;
+    text-align: center;
   }
 }
 @media (max-width: 675px) {

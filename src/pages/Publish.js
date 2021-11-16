@@ -180,7 +180,9 @@ const Publish = ({ token }) => {
 
             <div>
               <input className="exchange" type="checkbox" name="" id="" />
-              <span>Je suis intéressé(e) par les échanges</span>
+              <span className="exchangeText">
+                Je suis intéressé(e) par les échanges
+              </span>
             </div>
           </div>
 
