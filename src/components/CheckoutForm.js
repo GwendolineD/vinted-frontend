@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
 const CheckoutForm = ({ dataOffer }) => {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
 
   const [paymentOK, setPaymentOK] = useState(false);
 
   const total = dataOffer.product_price + 1.2;
+  const amount = (total * 10000) / 100;
+  console.log(amount);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,9 +26,9 @@ const CheckoutForm = ({ dataOffer }) => {
       const stripeToken = stripeResponse.token.id;
 
       const apiResponse = await axios.post("http://localhost:3000/payment", {
-        stripeToken,
-        // amount: total,
-        // description: dataOffer.product_description,
+        stripeToken: stripeToken,
+        amount: amount,
+        description: dataOffer.product_description,
       });
       console.log(apiResponse.data);
       if (apiResponse.data.status === "succeeded") {
@@ -36,7 +40,16 @@ const CheckoutForm = ({ dataOffer }) => {
   };
 
   return paymentOK ? (
-    <div> paiement effectué !</div>
+    <>
+      <div>
+        Votre paiement de {total} € pour l'achat de {dataOffer.product_name} a
+        été effectué avec succès!
+      </div>
+      {setTimeout(() => {
+        console.log("bye");
+        navigate("/");
+      }, 3000)}
+    </>
   ) : (
     <div>
       <h4>Résumé de la commande</h4>
