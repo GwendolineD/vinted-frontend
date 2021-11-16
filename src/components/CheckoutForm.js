@@ -43,10 +43,10 @@ const CheckoutForm = ({ dataOffer }) => {
   };
 
   return paymentOK ? (
-    <div>
+    <div className="paymentValid app">
       <div>
-        Votre paiement de {total} € pour l'achat de {dataOffer.product_name} a
-        été effectué avec succès!
+        Votre paiement de <span>{total} €</span> pour l'achat de{" "}
+        <span>{dataOffer.product_name}</span> a été effectué avec succès!
       </div>
       <Link to="/">Revenir aux offres</Link>
     </div>

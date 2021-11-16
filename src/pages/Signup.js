@@ -26,7 +26,6 @@ const Signup = ({ setToken }) => {
         }
       );
       // console.log(response.data);
-      // setUserData(response.data);// pose problème à la réouverture de la page, essayer avec des cookies
 
       Cookies.set("token", response.data.token, { expires: 4, secure: true });
       setToken(true);
@@ -77,7 +76,6 @@ const Signup = ({ setToken }) => {
           de 18 ans.
         </p>
         <input type="submit" value="S'inscrire" />
-        {/* ou boutton de type submit */}
       </form>
       <Link to="/login">
         <p>Tu as déjà un compte ? Connecte-toi !</p>

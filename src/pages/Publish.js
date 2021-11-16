@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import Cookies from "js-cookie";
 
-const Publish = ({ token }) => {
+const Publish = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -18,6 +19,7 @@ const Publish = ({ token }) => {
   const [preview, setPreview] = useState(null);
 
   const navigate = useNavigate();
+  const token = Cookies.get("token");
 
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.forEach((file) => {

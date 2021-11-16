@@ -12,7 +12,6 @@ import Publish from "./pages/Publish";
 import Payment from "./pages/Payment";
 
 function App() {
-  // const [userData, setUserData] = useState(""); // pose problème à la réouverture de la page, essayer avec des cookies
   const [search, setSearch] = useState("");
   const [priceMax, setPriceMax] = useState(1000);
   const [priceMin, setPriceMin] = useState(0);

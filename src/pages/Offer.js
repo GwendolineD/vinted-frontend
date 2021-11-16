@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,8 +7,6 @@ const Offer = () => {
   const { offerId } = useParams();
   const [dataOffer, setDataOffer] = useState();
   const [isLoading, setIsLoading] = useState(true);
-
-  // const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDataOffer = async () => {
@@ -80,7 +77,6 @@ const Offer = () => {
           <Link to="/payment" state={{ idOffer: offerId }}>
             <button>Acheter</button>
           </Link>
-          {/* onClick={() => {}} */}
         </aside>
       </main>
     </div>

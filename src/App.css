@@ -491,6 +491,7 @@ input[type="number"] {
   border-radius: 5px;
   color: #fff;
   padding: 5px 10px;
+  margin-bottom: 30px;
 }
 .publishPage form > div:last-child {
   margin-top: 40px;
@@ -575,6 +576,31 @@ input[type="number"] {
   font-weight: bold;
   font-size: inherit;
   margin-top: 30px;
+}
+.paymentValid {
+  border-radius: 5px;
+  height: 100px;
+  width: 200px;
+  margin: auto;
+  margin-top: 80px;
+  padding: 20px;
+  background-color: var(--blueVinted);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.paymentValid div {
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}
+.paymentValid div span {
+  font-weight: bold;
+}
+.paymentValid a {
+  font-weight: bold;
 }
 
 /* ------------------------------------------------------- */
