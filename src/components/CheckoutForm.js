@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -13,7 +13,7 @@ const CheckoutForm = ({ dataOffer }) => {
 
   const total = dataOffer.product_price + 1.2;
   const amount = (total * 10000) / 100;
-  console.log(amount);
+  //   console.log(amount);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,17 +25,21 @@ const CheckoutForm = ({ dataOffer }) => {
       //   console.log(stripeResponse.token.id);
       const stripeToken = stripeResponse.token.id;
 
-      const apiResponse = await axios.post("http://localhost:3000/payment", {
-        stripeToken: stripeToken,
-        amount: amount,
-        description: dataOffer.product_description,
-      });
+      const apiResponse = await axios.post(
+        "https://vintedlereacteur.herokuapp.com/payment",
+        {
+          stripeToken: stripeToken,
+          amount: amount,
+          description: dataOffer.product_description,
+        }
+      );
       console.log(apiResponse.data);
       if (apiResponse.data.status === "succeeded") {
         setPaymentOK(true);
       }
     } catch (error) {
       console.log(error.message);
+      console.log(error.apiResponse);
     }
   };
 
@@ -45,10 +49,7 @@ const CheckoutForm = ({ dataOffer }) => {
         Votre paiement de {total} € pour l'achat de {dataOffer.product_name} a
         été effectué avec succès!
       </div>
-      {setTimeout(() => {
-        console.log("bye");
-        navigate("/");
-      }, 3000)}
+      <Link to="/">Revenir aux offres</Link>
     </>
   ) : (
     <div>

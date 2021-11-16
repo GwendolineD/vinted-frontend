@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
-// import { useParams } from "react-router";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = ({ setToken }) => {
   // console.log(setToken);s
@@ -13,6 +12,8 @@ const Login = ({ setToken }) => {
   // const [loginData, setLoginData] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log("location>>>", location);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -31,7 +32,7 @@ const Login = ({ setToken }) => {
 
       Cookies.set("token", response.data.token, { expires: 4, secure: true });
       setToken(true);
-      navigate("/");
+      navigate(location.state?.fromPublish ? "/publish" : "/");
     } catch (error) {
       console.log(error.response);
     }

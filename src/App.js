@@ -51,7 +51,7 @@ function App() {
         />
         <Route path="/offer/:offerId" element={<Offer />} />
         <Route path="/publish" element={<Publish />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment" element={<Payment token={token} />} />
       </Routes>
     </Router>
   );

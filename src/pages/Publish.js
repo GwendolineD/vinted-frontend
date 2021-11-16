@@ -193,7 +193,7 @@ const Publish = () => {
       </div>
     </div>
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/login" state={{ fromPublish: true }} />
   );
 };
 
