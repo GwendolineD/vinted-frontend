@@ -464,6 +464,13 @@ input[type="number"] {
   border-bottom: 1px solid lightgrey;
   background-color: #fff;
 }
+.textarea {
+  padding-top: 10px;
+  border: none;
+  color: lightgrey;
+  font-family: inherit;
+  border-bottom: 1px solid lightgrey;
+}
 .publishPage form > div:first-child {
   height: 250px;
   padding: 20px;
@@ -499,7 +506,8 @@ input[type="number"] {
   margin-right: 30px;
 }
 .exchange {
-  margin-left: 343px;
+  margin-left: 340px;
+  transform: scale(0.5);
 }
 
 /* ------------------------------------------------------- */

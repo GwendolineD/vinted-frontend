@@ -50,7 +50,7 @@ function App() {
           }
         />
         <Route path="/offer/:offerId" element={<Offer />} />
-        <Route path="/publish" element={<Publish />} />
+        <Route path="/publish" element={<Publish token={token} />} />
         <Route path="/payment" element={<Payment token={token} />} />
       </Routes>
     </Router>

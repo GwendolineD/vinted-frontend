@@ -5,11 +5,8 @@ import Cookies from "js-cookie";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = ({ setToken }) => {
-  // console.log(setToken);s
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [loginData, setLoginData] = useState(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,11 +25,11 @@ const Login = ({ setToken }) => {
         }
       );
       // console.log(response.data);
-      // setUserData(response.data);// pose problème à la réouverture de la page, essayer avec des cookies
 
       Cookies.set("token", response.data.token, { expires: 4, secure: true });
       setToken(true);
-      navigate(location.state?.fromPublish ? "/publish" : "/");
+
+      navigate(location.state?.fromPayment ? "/payment" : "/");
     } catch (error) {
       console.log(error.response);
     }

@@ -3,7 +3,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-// import Cookies from "js-cookie";
 import axios from "axios";
 
 import CheckoutForm from "../components/CheckoutForm";
@@ -25,7 +24,7 @@ const Payment = ({ token }) => {
         const response = await axios.get(
           `https://vintedlereacteur.herokuapp.com/offer/${idOffer}`
         );
-
+        // console.log("response data >>>", response.data);
         setDataOffer(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -35,7 +34,7 @@ const Payment = ({ token }) => {
     fetchDataOffer();
   }, [idOffer]);
 
-  console.log(dataOffer);
+  //   console.log("dataOffer>>>", dataOffer);
   return !token ? (
     <Navigate to="/login" state={{ fromPayment: true }} />
   ) : isLoading ? (

@@ -41,16 +41,6 @@ const Header = ({
             sort={sort}
           />
 
-          {/* {userData && (
-            <div style={{ color: "#2cb1ba", fontWeight: "bold" }}>
-              Welcome{" "}
-              <span style={{ color: "black" }}>
-                {userData.account.username}
-              </span>{" "}
-              !
-            </div>
-          )} // pose problème à la réouverture de la page, essayer avec des cookies*/}
-
           <div>
             <button onClick={handleDeconnection} className="deconnect">
               Se déconnecter

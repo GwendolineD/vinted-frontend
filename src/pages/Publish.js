@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import Cookies from "js-cookie";
 import { useNavigate, Navigate } from "react-router-dom";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
-const Publish = () => {
+const Publish = ({ token }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -19,7 +18,6 @@ const Publish = () => {
   const [preview, setPreview] = useState(null);
 
   const navigate = useNavigate();
-  const token = Cookies.get("token");
 
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.forEach((file) => {
@@ -85,7 +83,7 @@ const Publish = () => {
             {isDragActive ? (
               <p>Drop the files here ...</p>
             ) : (
-              <p>Drag 'n' drop some files here, or click to select files</p>
+              <p>Dépose ta photo ici, ou clic pour selectionner un fichier</p>
             )}
             {preview && (
               <img
@@ -112,8 +110,9 @@ const Publish = () => {
             <div>
               <span>Décris ton article</span>
               <textarea
+                className="textarea"
                 row="6"
-                cols="75"
+                cols="70"
                 onChange={(event) => setDescription(event.target.value)}
                 placeholder="ex: porté quelques fois, taille correctement"
               ></textarea>
