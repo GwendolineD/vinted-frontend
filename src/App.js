@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Header from "./components/Header";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 function App() {
   // const [userData, setUserData] = useState(""); // pose problème à la réouverture de la page, essayer avec des cookies
@@ -50,6 +51,7 @@ function App() {
         />
         <Route path="/offer/:offerId" element={<Offer />} />
         <Route path="/publish" element={<Publish />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );

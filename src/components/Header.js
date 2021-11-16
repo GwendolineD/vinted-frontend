@@ -24,16 +24,6 @@ const Header = ({
     navigate("/");
   };
 
-  const isToken = Cookies.get("token");
-  console.log(isToken);
-  const handleSellNow = () => {
-    if (isToken) {
-      navigate("/publish");
-    } else {
-      navigate("/login");
-    }
-  };
-
   return (
     <div>
       {token ? (
@@ -65,9 +55,9 @@ const Header = ({
             <button onClick={handleDeconnection} className="deconnect">
               Se déconnecter
             </button>
-            <button onClick={handleSellNow} className="headerLastButton">
-              Vends maintenant
-            </button>
+            <Link to="/publish">
+              <button className="headerLastButton">Vends maintenant</button>
+            </Link>
           </div>
         </header>
       ) : (
@@ -91,10 +81,9 @@ const Header = ({
             <Link to="/login">
               <button>Se connecter</button>
             </Link>
-
-            <button onClick={handleSellNow} className="headerLastButton">
-              Vends maintenant
-            </button>
+            <Link to="/publish">
+              <button className="headerLastButton">Vends maintenant</button>
+            </Link>
           </div>
         </header>
       )}

@@ -1,12 +1,15 @@
 import { useParams } from "react-router";
 import axios from "axios";
-// import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Offer = () => {
   const { offerId } = useParams();
   const [dataOffer, setDataOffer] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDataOffer = async () => {
@@ -23,6 +26,8 @@ const Offer = () => {
     };
     fetchDataOffer();
   }, [offerId]);
+
+  // console.log(offerId);
 
   return isLoading ? (
     <p>Page is downloading ...</p>
@@ -72,7 +77,10 @@ const Offer = () => {
               <span>{dataOffer.owner.account.username}</span>
             </div>
           </div>
-          <button>Acheter</button>
+          <Link to="/payment" state={{ idOffer: offerId }}>
+            <button>Acheter</button>
+          </Link>
+          {/* onClick={() => {}} */}
         </aside>
       </main>
     </div>

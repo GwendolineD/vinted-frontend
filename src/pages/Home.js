@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
 import bandeau from "../assets/img/banner.jpg";
@@ -11,26 +10,11 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
   const [dataOffers, setDataOffers] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const navigate = useNavigate();
-
-  const isToken = Cookies.get("token");
-  console.log(isToken);
-  const handleSellNow = () => {
-    if (isToken) {
-      navigate("/publish");
-    } else {
-      navigate("/login");
-    }
-  };
-
   useEffect(() => {
     let sortChoice = "price_asc";
     if (!sort) {
       sortChoice = "price_desc";
     }
-    // } else {
-    //   sortChoice = "price_asc";
-    // }
 
     try {
       const fetchDataOffers = async () => {
@@ -57,7 +41,9 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
       <div className="hero">
         <div className="rectangle">
           <h1>Prêts à faire du tri dans vos placards ?</h1>
-          <button onClick={handleSellNow}>Commencer à vendre</button>
+          <Link to="/publish">
+            <button>Commencer à vendre</button>
+          </Link>
         </div>
         <img
           className="bandeau"

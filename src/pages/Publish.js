@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
@@ -32,7 +32,7 @@ const Publish = () => {
         setPreview(URL.createObjectURL(file));
         setPicture(file);
         const binaryStr = reader.result;
-        // console.log(binaryStr);
+        console.log(binaryStr);
       };
       reader.readAsArrayBuffer(file);
     });
@@ -64,7 +64,7 @@ const Publish = () => {
         }
       );
       console.log(response.data);
-      if (response.data) {
+      if (response.data._id) {
         setIsLoading(false);
         navigate(`/offer/${response.data._id}`);
       }
@@ -74,7 +74,7 @@ const Publish = () => {
     }
   };
 
-  return (
+  return token ? (
     <div className="publishPage app">
       <div className="container">
         <h2>Vends ton article</h2>
@@ -104,18 +104,19 @@ const Publish = () => {
               <span>Titre</span>
               <input
                 onChange={(event) => setTitle(event.target.value)}
-                type="textarea"
+                type="text"
                 placeholder="ex: Chemise Sézane verte"
               />
             </div>
 
             <div>
               <span>Décris ton article</span>
-              <input
+              <textarea
+                row="6"
+                cols="75"
                 onChange={(event) => setDescription(event.target.value)}
-                type="text"
                 placeholder="ex: porté quelques fois, taille correctement"
-              />
+              ></textarea>
             </div>
           </div>
 
@@ -191,6 +192,8 @@ const Publish = () => {
         </form>
       </div>
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 
