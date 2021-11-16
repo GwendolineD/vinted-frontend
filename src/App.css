@@ -436,7 +436,6 @@ input[type="number"] {
   font-weight: bold;
   font-size: 24px;
 }
-
 .publishPage form > div:not(:last-child) {
   margin: 20px 0;
   border: 1px solid lightgrey;
@@ -586,7 +585,7 @@ input[type="number"] {
   /* 820 > 1130px --- HOME PAGE - hero */
   header button {
     height: 25px;
-    width: 80px;
+    width: 90px;
     font-size: 10px;
   }
   header a button,
@@ -609,7 +608,7 @@ input[type="number"] {
     font-size: 10px;
   }
   .prixEntre {
-    margin-left: 30px;
+    margin-left: 20px;
   }
   input[type="number"] {
     font-size: 10px;
@@ -737,48 +736,35 @@ input[type="number"] {
   }
 
   /* max 819 px --- OFFER PAGE - photo */
-  /* .offerPicture {
-  display: flex;
-  justify-content: center;
-} */
   .offerPicture img {
     max-height: 350px;
     max-width: 350px;
-    /* object-fit: contain; */
   }
 
   /* max 819 px --- OFFER PAGE - aside */
   .offerAside {
-    /* height: 500px; */
     width: 280px;
-    /* background-color: #fff; */
     margin-left: 20px;
     padding: 20px;
-    /* box-sizing: border-box; */
   }
+
   /* max 819 px --- OFFER PAGE - aside - firstpart */
   .offerAsideFirstpart {
-    /* border-bottom: 1px solid lightgrey; */
     padding-bottom: 20px;
   }
   .offerAsideFirstpart > p {
-    /* font-weight: bold; */
     font-size: 20px;
     line-height: 26px;
     margin-bottom: 15px;
   }
   .offerAsideFirstpart > div {
-    /* display: flex; */
     font-size: 12px;
-    /* line-height: 20px; */
-    /* font-weight: bold; */
   }
   .offerAsideFirstpart > div > div:first-child {
-    /* color: #999999; */
     margin-right: 25px;
   }
 
-  /* max 819 px --- OFFER PAGE -aside - secondpart */
+  /* max 819px --- OFFER PAGE -aside - secondpart */
   .offerAsideSecondpart {
     padding-top: 20px;
     margin-bottom: 20px;
@@ -790,6 +776,76 @@ input[type="number"] {
   .offerAside button {
     font-size: 14px;
   }
+
+  /* ------------ */
+  /* max 819px --- PAYMENT PAGE */
+  /* .paymentPage {
+    background-color: #ebedee;
+    height: 100vh;
+    padding-top: 50px;
+  } */
+  .commande {
+    /* height: 600px; */
+    width: 380px;
+    /* margin: auto; */
+    /* border-radius: 5px; */
+    /* background-color: #fff; */
+    /* padding: 25px; */
+  }
+  /* .commande h4 {
+    font-size: 14px;
+    color: #999999;
+    margin-bottom: 30px;
+  } */
+  /* .recap {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 15px;
+    color: #999999;
+    display: flex;
+    justify-content: space-between;
+  } */
+  /* .recap:nth-child(4) {
+    margin-bottom: 50px;
+  }
+  .commande form {
+    border-top: 1px solid lightgrey;
+    padding-top: 40px;
+  }
+
+  .totalPayment {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  } */
+  .commande form p {
+    font-size: 14px;
+    /* margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid lightgrey;
+    text-align: center; */
+  }
+  /*.commande form p span {
+    font-weight: bold;
+  }
+  .cardElement {
+    border: 1px solid rgb(241, 238, 238);
+    border-radius: 3px;
+    padding: 10px;
+  }
+  .commande form input[type="submit"] {
+    background-color: #02c06d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    width: 100%;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    margin-top: 30px;
+  } */
 }
 /* ---------------------------------------------- */
 @media (max-width: 516px) {
@@ -845,6 +901,31 @@ input[type="number"] {
     display: none;
   }
   /* ------------ */
+
+  /* max 516px --- PAYMENT PAGE */
+  .commande {
+    width: 280px;
+  }
+  .commande h4 {
+    font-size: 12px;
+  }
+  .recap {
+    font-size: 14px;
+  }
+  .recap:nth-child(4) {
+    margin-bottom: 30px;
+  }
+  .commande form {
+    padding-top: 25px;
+  }
+
+  .totalPayment {
+    margin-bottom: 35px;
+  }
+  .commande form p {
+    font-size: 12px;
+    padding-bottom: 20px;
+  }
 }
 @media (max-width: 675px) {
   /* max 675px --- OFFER PAGE */
@@ -894,8 +975,6 @@ input[type="number"] {
   }
   .offerAsideSecondpart p:nth-child(2) {
     margin-top: 10px;
-  }
-  .offerOwnerAvatar {
   }
   .offerAside button {
     font-size: 14px;
