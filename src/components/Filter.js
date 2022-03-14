@@ -19,6 +19,7 @@ const Filter = ({
         id=""
       />
 
+      {/* Sort toggle */}
       <div className="toggleAndText">
         <span>Trier par prix </span>
         <label className="toggleSwitch">
@@ -32,6 +33,7 @@ const Filter = ({
           <span className="switch" />
         </label>
 
+        {/* Price filter */}
         <span className="prixEntre">Prix entre</span>
         <input
           onChange={(event) => {

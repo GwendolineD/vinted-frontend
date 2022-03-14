@@ -13,7 +13,7 @@ const Payment = ({ token }) => {
 
   const location = useLocation();
   const { idOffer } = location.state;
-  //   console.log("id >>>", idOffer);
+
   const stripePromise = loadStripe(
     "pk_test_51JwR3iDsgZzpCktrB9Ra8xSMO5EkQlsoj6RupDA6knzBLxcwelix67XsVhV8SddUt7Ame9LouJVmsgHM9KfVZNvt00RSkstDFG"
   );
@@ -28,15 +28,14 @@ const Payment = ({ token }) => {
         setDataOffer(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.message);
+        console.log("Catch payment >>>>>", error.message);
       }
     };
     fetchDataOffer();
   }, [idOffer]);
 
-  //   console.log("dataOffer>>>", dataOffer);
   return !token ? (
-    <Navigate to="/login" state={{ fromPayment: true }} />
+    <Navigate to="/login" state={{ fromPayment: true }} /> //send id instead of true
   ) : isLoading ? (
     <p>Page is downloading ...</p>
   ) : (

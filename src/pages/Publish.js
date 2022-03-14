@@ -1,7 +1,6 @@
-import axios from "axios";
-import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
+import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import Cookies from "js-cookie";
 
@@ -19,30 +18,15 @@ const Publish = () => {
   const [preview, setPreview] = useState(null);
 
   const navigate = useNavigate();
+
   const token = Cookies.get("token");
-
-  const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.forEach((file) => {
-      const reader = new FileReader();
-
-      reader.onabort = () => console.log("file reading was aborted");
-      reader.onerror = () => console.log("file reading has failed");
-      reader.onload = () => {
-        // console.log("file >>>>", file);
-        setPreview(URL.createObjectURL(file));
-        setPicture(file);
-        const binaryStr = reader.result;
-        console.log(binaryStr);
-      };
-      reader.readAsArrayBuffer(file);
-    });
-  }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       setIsLoading(true);
+
       const formData = new FormData();
       formData.append("title", title);
       formData.append("description", description);
@@ -55,7 +39,7 @@ const Publish = () => {
       formData.append("picture", picture);
 
       const response = await axios.post(
-        "https://vintedlereacteur.herokuapp.com/offer/publish", // mon API
+        "https://vintedlereacteur.herokuapp.com/offer/publish",
         formData,
         {
           headers: {
@@ -63,16 +47,34 @@ const Publish = () => {
           },
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
+
       if (response.data._id) {
         setIsLoading(false);
         navigate(`/offer/${response.data._id}`);
       }
     } catch (error) {
-      console.log(error.message);
-      console.log(error.response);
+      console.log("Catch Publish >>>>>", error.response);
     }
   };
+
+  // DropZone package
+  const onDrop = useCallback((acceptedFiles) => {
+    acceptedFiles.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onabort = () => console.log("file reading was aborted");
+      reader.onerror = () => console.log("file reading has failed");
+      reader.onload = () => {
+        setPreview(URL.createObjectURL(file));
+        setPicture(file);
+        const binaryStr = reader.result;
+        console.log(binaryStr);
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return token ? (
     <div className="publishPage app">
@@ -83,9 +85,9 @@ const Publish = () => {
           <div className="dropZone" {...getRootProps()}>
             <input type="file" {...getInputProps()} />
             {isDragActive ? (
-              <p>Drop the files here ...</p>
+              <p>Dépose ta photo ici ...</p>
             ) : (
-              <p>Dépose ta photo ici, ou clic pour selectionner un fichier</p>
+              <p>Dépose ta photo ici, ou clique pour selectionner un fichier</p>
             )}
             {preview && (
               <img
@@ -93,12 +95,12 @@ const Publish = () => {
                   setPreview(null);
                 }}
                 src={preview}
-                alt="preview"
+                alt="Prévisualisation de l'image"
               />
             )}
           </div>
 
-          {/* reste formulaire */}
+          {/* Second part of form */}
           <div>
             <div>
               <span>Titre</span>
@@ -113,7 +115,7 @@ const Publish = () => {
               <span>Décris ton article</span>
               <textarea
                 className="textarea"
-                row="6"
+                row="16"
                 cols="70"
                 onChange={(event) => setDescription(event.target.value)}
                 placeholder="ex: porté quelques fois, taille correctement"
@@ -170,7 +172,7 @@ const Publish = () => {
 
           <div>
             <div>
-              <span>Prix</span>
+              <span>Prix (en euros)</span>
               <input
                 onChange={(event) => {
                   setPrice(Number(event.target.value));
@@ -181,7 +183,7 @@ const Publish = () => {
             </div>
 
             <div>
-              <input className="exchange" type="checkbox" name="" id="" />
+              <input className="exchange" type="checkbox" />
               <span className="exchangeText">
                 Je suis intéressé(e) par les échanges
               </span>

@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
@@ -10,15 +9,13 @@ const Login = ({ setToken }) => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("location>>>", location);
 
   const handleLogin = async (event) => {
     event.preventDefault();
 
     try {
       const response = await axios.post(
-        // "https://lereacteur-vinted-api.herokuapp.com/user/login", //API du reacteur
-        "https://vintedlereacteur.herokuapp.com/user/login", //mon API
+        "https://vintedlereacteur.herokuapp.com/user/login",
         {
           email: email,
           password: password,
@@ -29,15 +26,16 @@ const Login = ({ setToken }) => {
       Cookies.set("token", response.data.token, { expires: 4, secure: true });
       setToken(true);
 
-      navigate(location.state?.fromPayment ? "/payment" : "/");
+      navigate(location.state?.fromPayment ? "/payment" : "/"); // TO DO : redirect to the offer, not payement page
     } catch (error) {
-      console.log(error.response);
+      console.log("Catch login>>>>>", error.response);
     }
   };
 
   return (
     <div className="app loginPage">
       <h1>Se connecter</h1>
+
       <form onSubmit={handleLogin}>
         <input
           onChange={(event) => {
@@ -49,6 +47,7 @@ const Login = ({ setToken }) => {
           name=""
           id=""
         />
+
         <input
           onChange={(event) => {
             setPassword(event.target.value);
@@ -61,6 +60,7 @@ const Login = ({ setToken }) => {
         />
         <input type="submit" value="Se connecter" />
       </form>
+
       <Link to="/signup">
         <p>Pas encore de compte ? Inscris-toi !</p>
       </Link>

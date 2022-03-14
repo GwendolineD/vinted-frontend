@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
 
 import bandeau from "../assets/img/banner.jpg";
 import dechirement from "../assets/img/dechirement.svg";
@@ -18,18 +18,16 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
     try {
       const fetchDataOffers = async () => {
         const response = await axios.get(
-          `https://vintedlereacteur.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sortChoice}` //mon API
-          // `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}` // l'API du reacteur
+          `https://vintedlereacteur.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sortChoice}`
         );
-        setDataOffers(response.data); //avec mon API
-        // setDataOffers(response.data.offers); // avec l'API du reacteur
-        setIsLoading(false);
+
         // console.log(response.data);
+        setDataOffers(response.data);
+        setIsLoading(false);
       };
       fetchDataOffers();
     } catch (error) {
-      console.log(error.message);
-      console.log(error.response);
+      console.log("Catch home>>>>", error.response);
     }
   }, [priceMax, search, priceMin, sort]);
 
@@ -37,13 +35,16 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
     <div className="downloading">Page is dowloading ...</div>
   ) : (
     <div className="app">
+      {/* Hero */}
       <div className="hero">
         <div className="rectangle">
           <h1>Prêts à faire du tri dans vos placards ?</h1>
+
           <Link to="/publish">
             <button>Commencer à vendre</button>
           </Link>
         </div>
+
         <img
           className="bandeau"
           src={bandeau}
@@ -53,11 +54,13 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
         <img className="effet" src={dechirement} alt="effet déchiré" />
       </div>
 
+      {/* Offers */}
       <main className="homeMain">
         {dataOffers.map((offer) => {
           return (
             <div key={offer._id} className="homeOffer">
               <Link to={`/offer/${offer._id}`}>
+                {/* owner's infos */}
                 <div className="homeUser">
                   {offer.owner.account.avatar && (
                     <img
@@ -70,11 +73,13 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
                   <p>{offer.owner.account.username}</p>
                 </div>
 
+                {/* product's infos */}
                 <img
                   className="homeProductPicture"
                   src={offer.product_image.picture.secure_url}
                   alt="produit à vendre"
                 />
+
                 <p>{offer.product_price} €</p>
                 {offer.product_details.map((productDetail, index) => {
                   return (

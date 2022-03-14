@@ -11,9 +11,6 @@ a {
 .app {
   font-family: "Maison Neue Light", sans-serif;
 }
-.app button {
-  cursor: pointer;
-}
 h1 {
   font-size: 24px;
   line-height: 30px;
@@ -37,6 +34,8 @@ h1 {
 
 /* ------------------------------------------------ */
 /* HEADER */
+/* ------------------------------------------------ */
+
 header {
   height: 100px;
   max-width: 1250px;
@@ -148,6 +147,8 @@ input[type="number"] {
 
 /* ---------------------------------------------- */
 /* HOME PAGE - hero */
+/* ------------------------------------------------ */
+
 .hero {
   height: 450px;
   width: 100vw;
@@ -233,6 +234,8 @@ input[type="number"] {
 
 /* ------------------------------------------------ */
 /* OFFER PAGE */
+/* ------------------------------------------------ */
+
 .mainOffer {
   display: flex;
   justify-content: center;
@@ -323,30 +326,27 @@ input[type="number"] {
 
 /* ------------------------------------------------ */
 /* SIGNUP PAGE*/
-.signupForm {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  margin: auto;
-}
-.signupForm input {
-  width: 400px;
-}
+/* ------------------------------------------------ */
+
 .signupPage {
   display: flex;
   flex-direction: column;
   align-items: center;
   border-top: 1px solid lightgrey;
 }
-.signupPage form {
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  /* width: 400px; */
+  margin: auto;
   width: 270px;
 }
-.signupPage form input {
-  width: 100%;
+.signupForm input {
+  width: 400px;
 }
-.signupPage form div {
-  display: flex;
-}
+/* .signupPage form {
+  width: 270px;
+} */
 .signupPage input {
   border: none;
   border-bottom: 1px solid #fcced3;
@@ -355,20 +355,12 @@ input[type="number"] {
   font-size: inherit;
   line-height: 40px;
   color: #999999;
-}
-.signupPage form div span {
-  font-size: 14px;
-  line-height: 40px;
-  margin-top: 15px;
-  color: #666666;
-  width: 700px;
+  width: 100%;
 }
 .signupPage p {
   font-size: 12px;
   margin: 20px 0;
-}
-.signupPage p {
-  color: #999999;
+  color: var(--blueVinted);
 }
 .signupPage input[type="submit"] {
   background-color: var(--blueVinted);
@@ -379,13 +371,13 @@ input[type="number"] {
   font-family: inherit;
   font-size: inherit;
   margin-top: 30px;
-}
-.signupPage p:last-child {
-  color: var(--blueVinted);
+  /* cursor: pointer; */
 }
 
 /* ---------------------------------------- */
 /*  LOGIN PAGE*/
+/* ------------------------------------------------ */
+
 .loginPage {
   display: flex;
   flex-direction: column;
@@ -415,6 +407,7 @@ input[type="number"] {
   font-family: inherit;
   font-size: inherit;
   margin-top: 40px;
+  /* cursor: pointer; */
 }
 .loginPage p {
   font-size: 12px;
@@ -424,6 +417,8 @@ input[type="number"] {
 
 /* ------------------------------- */
 /* PUBLISH PAGE */
+/* ------------------------------------------------ */
+
 .publishPage {
   display: flex;
   flex-direction: column;
@@ -468,6 +463,7 @@ input[type="number"] {
   color: lightgrey;
   font-family: inherit;
   border-bottom: 1px solid lightgrey;
+  height: 120px;
 }
 .publishPage form > div:first-child {
   height: 250px;
@@ -511,6 +507,8 @@ input[type="number"] {
 }
 /* ------------------------------------------------ */
 /* PAYMENT PAGE */
+/* ------------------------------------------------ */
+
 .paymentPage {
   background-color: #ebedee;
   height: 100vh;
@@ -544,7 +542,6 @@ input[type="number"] {
   border-top: 1px solid lightgrey;
   padding-top: 40px;
 }
-
 .totalPayment {
   font-weight: bold;
   display: flex;
@@ -576,6 +573,7 @@ input[type="number"] {
   font-weight: bold;
   font-size: inherit;
   margin-top: 30px;
+  /* cursor: pointer; */
 }
 .paymentValid {
   border-radius: 5px;
@@ -603,8 +601,9 @@ input[type="number"] {
   font-weight: bold;
 }
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------ */
 /* MEDIA QUERIES */
+/* ------------------------------------------------ */
 
 @media (min-width: 820px) and (max-width: 1130px) {
   /* 820 > 1130px --- HOME PAGE - hero */
@@ -657,7 +656,6 @@ input[type="number"] {
     transform: translateX(-13px);
   }
 
-  /* ------------ */
   /* 820 > 1130px --- HOME PAGE - hero */
   .hero {
     height: 33vw;
@@ -666,7 +664,6 @@ input[type="number"] {
     display: none;
   }
 
-  /* ---------- */
   /* 820 > 1130px --- OFFER PAGE  */
   .mainOffer {
     height: 100vh;
@@ -684,7 +681,6 @@ input[type="number"] {
     margin-left: 50px;
   }
 
-  /* ----------------- */
   /* 820 > 1130px --- PUBLISH PAGE */
   .container {
     width: calc(100vw - 80px);
@@ -724,7 +720,7 @@ input[type="number"] {
   }
 }
 
-/* -------------------------------------- */
+/* ------------------------------------------------ */
 @media (max-width: 819px) {
   /* max 819px --- HEADER */
   header {
@@ -769,7 +765,6 @@ input[type="number"] {
     margin-right: 10px;
   }
 
-  /* ------------ */
   /* max 819 px --- HOME PAGE - hero */
   .hero {
     height: 33vw;
@@ -778,13 +773,11 @@ input[type="number"] {
     display: none;
   }
 
-  /* ------------- */
   /* max 819 px --- HOME PAGE - offers */
   .homeProductPicture {
     height: 300px;
   }
 
-  /* ------------ */
   /* max 819 px --- OFFER PAGE */
   .mainOffer {
     display: flex;
@@ -836,9 +829,7 @@ input[type="number"] {
     font-size: 14px;
   }
 
-  /* ------------ */
   /* max 819px --- PAYMENT PAGE */
-
   .commande {
     width: 380px;
   }
@@ -846,7 +837,6 @@ input[type="number"] {
     font-size: 14px;
   }
 
-  /* ----------------- */
   /* max 819px --- PUBLISH PAGE */
   .container {
     width: calc(100vw - 80px);
@@ -879,8 +869,8 @@ input[type="number"] {
     width: 450px;
   }
 }
-/* ---------------------------------------------- */
 
+/* ------------------------------------------------ */
 @media (max-width: 516px) {
   /* max 516px --- HEADER */
   header {
@@ -928,12 +918,10 @@ input[type="number"] {
     font-size: 12px;
   }
 
-  /* ------------ */
   /* max 516px --- HOME PAGE - hero */
   .hero {
     display: none;
   }
-  /* ------------ */
 
   /* max 516px --- PAYMENT PAGE */
   .commande {
@@ -959,7 +947,7 @@ input[type="number"] {
     font-size: 12px;
     padding-bottom: 20px;
   }
-  /* ------------------ */
+
   /* max 516px --- PUBLISH PAGE */
   .container {
     width: calc(100vw - 80px);
@@ -973,7 +961,6 @@ input[type="number"] {
     flex-direction: column;
     font-size: 14px;
   }
-
   .publishPage form > div > div input {
     font-size: 14px;
     width: 300px;
@@ -995,7 +982,6 @@ input[type="number"] {
   .publishPage input[type="submit"] {
     font-size: 15px;
   }
-
   .exchange {
     margin-left: 0px;
     margin-top: 10px;
@@ -1007,6 +993,7 @@ input[type="number"] {
     text-align: center;
   }
 }
+/* ------------------------------------------------ */
 @media (max-width: 675px) {
   /* max 675px --- OFFER PAGE */
   .mainOffer {

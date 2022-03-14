@@ -1,8 +1,7 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
 
 const Signup = ({ setToken }) => {
   const [name, setName] = useState("");
@@ -16,8 +15,7 @@ const Signup = ({ setToken }) => {
 
     try {
       const response = await axios.post(
-        // "https://lereacteur-vinted-api.herokuapp.com/user/signup", //API du reacteur
-        "https://vintedlereacteur.herokuapp.com/user/signup", //mon API
+        "https://vintedlereacteur.herokuapp.com/user/signup",
         {
           email: email,
           username: name,
@@ -30,15 +28,15 @@ const Signup = ({ setToken }) => {
       Cookies.set("token", response.data.token, { expires: 4, secure: true });
       setToken(true);
       navigate("/");
-      //
     } catch (error) {
-      console.log(error.response);
+      console.log("Catch signUp >>>>>", error.response);
     }
   };
 
   return (
     <div className="app signupPage">
       <h1>S'incrire</h1>
+
       <form className="signupForm" onSubmit={handleSubmit}>
         <input
           onChange={(event) => {
@@ -48,6 +46,7 @@ const Signup = ({ setToken }) => {
           placeholder="Nom d'utilisateur"
           value={name}
         />
+
         <input
           onChange={(event) => {
             setEmail(event.target.value);
@@ -56,6 +55,7 @@ const Signup = ({ setToken }) => {
           placeholder="Email"
           value={email}
         />
+
         <input
           onChange={(event) => {
             setPassword(event.target.value);
@@ -65,18 +65,9 @@ const Signup = ({ setToken }) => {
           value={password}
         />
 
-        <div className="checkboxContainer">
-          <input type="checkbox" name="" id="" />
-          <span>S'inscrire à notre newsletter</span>
-        </div>
-
-        <p>
-          En m'inscrivant, je confirme que j'ai accepté les Termes & Conditions
-          de Vinted, avoir lu la Politique de Confidentialité, et que j'ai plus
-          de 18 ans.
-        </p>
         <input type="submit" value="S'inscrire" />
       </form>
+
       <Link to="/login">
         <p>Tu as déjà un compte ? Connecte-toi !</p>
       </Link>

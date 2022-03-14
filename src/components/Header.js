@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import Logo from "../assets/img/logo-vinted.png";
@@ -26,57 +25,45 @@ const Header = ({
 
   return (
     <div>
-      {token ? (
-        <header className="app">
-          <Link to="/">
-            <img src={Logo} alt="Logo Vinted" />
-          </Link>
-          <Filter
-            setSearch={setSearch}
-            setPriceMax={setPriceMax}
-            priceMax={priceMax}
-            setPriceMin={setPriceMin}
-            priceMin={priceMin}
-            setSort={setSort}
-            sort={sort}
-          />
-
+      <header className="app">
+        <Link to="/">
+          <img src={Logo} alt="Logo Vinted" />
+        </Link>
+        <Filter
+          setSearch={setSearch}
+          setPriceMax={setPriceMax}
+          priceMax={priceMax}
+          setPriceMin={setPriceMin}
+          priceMin={priceMin}
+          setSort={setSort}
+          sort={sort}
+        />
+        {token ? (
           <div>
             <button onClick={handleDeconnection} className="deconnect">
               Se déconnecter
             </button>
+
             <Link to="/publish">
               <button className="headerLastButton">Vends maintenant</button>
             </Link>
           </div>
-        </header>
-      ) : (
-        <header className="app">
-          <Link to="/" className="headerElement">
-            <img src={Logo} alt="Logo Vinted" />
-          </Link>
-          <Filter
-            setSearch={setSearch}
-            setPriceMax={setPriceMax}
-            priceMax={priceMax}
-            setPriceMin={setPriceMin}
-            priceMin={priceMin}
-            setSort={setSort}
-            sort={sort}
-          />
+        ) : (
           <div className="headerElement">
             <Link to="/signup">
               <button>S'incrire</button>
             </Link>
+
             <Link to="/login">
               <button>Se connecter</button>
             </Link>
+
             <Link to="/publish">
               <button className="headerLastButton">Vends maintenant</button>
             </Link>
           </div>
-        </header>
-      )}
+        )}
+      </header>
     </div>
   );
 };

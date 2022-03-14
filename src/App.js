@@ -18,7 +18,6 @@ function App() {
   const [sort, setSort] = useState(true);
 
   const [token, setToken] = useState(Cookies.get("token") ? true : false);
-  // console.log(token);
 
   return (
     <Router>
