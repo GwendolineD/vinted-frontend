@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
 
 import bandeau from "../assets/img/banner.jpg";
 import dechirement from "../assets/img/dechirement.svg";
+import avatar from "../assets/img/defaultAvatar.png";
 
 const Home = ({ search, priceMax, priceMin, sort }) => {
   const [dataOffers, setDataOffers] = useState();
@@ -32,7 +34,10 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
   }, [priceMax, search, priceMin, sort]);
 
   return isLoading ? (
-    <div className="downloading">Page is dowloading ...</div>
+    <div className="downloading">
+      Chargement de la page
+      <ThreeDots color="#2cb1ba" height={80} width={80} />
+    </div>
   ) : (
     <div className="app">
       {/* Hero */}
@@ -62,11 +67,17 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
               <Link to={`/offer/${offer._id}`}>
                 {/* owner's infos */}
                 <div className="homeUser">
-                  {offer.owner.account.avatar && (
+                  {offer.owner.account.avatar ? (
                     <img
                       className="homeOwnerAvatar"
                       src={offer.owner.account.avatar.secure_url}
                       alt="user avatar"
+                    />
+                  ) : (
+                    <img
+                      src={avatar}
+                      alt="avatar par défaut"
+                      className="homeOwnerAvatar"
                     />
                   )}
 

@@ -4,6 +4,7 @@ import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
 
 import CheckoutForm from "../components/CheckoutForm";
 
@@ -35,9 +36,12 @@ const Payment = ({ token }) => {
   }, [idOffer]);
 
   return !token ? (
-    <Navigate to="/login" state={{ fromPayment: true }} /> //send id instead of true
+    <Navigate to="/login" state={{ from: `/offer/${idOffer}` }} /> //send id instead of true
   ) : isLoading ? (
-    <p>Page is downloading ...</p>
+    <div className="downloading">
+      Chargement de la page
+      <ThreeDots color="#2cb1ba" height={80} width={80} />
+    </div>
   ) : (
     <Elements stripe={stripePromise}>
       <CheckoutForm dataOffer={dataOffer} />

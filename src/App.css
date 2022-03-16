@@ -30,6 +30,8 @@ h1 {
   font-weight: bold;
   text-align: center;
   margin-top: calc((100vh - 200px) / 2);
+  display: flex;
+  justify-content: center;
 }
 
 /* ------------------------------------------------ */
@@ -329,24 +331,27 @@ input[type="number"] {
 /* ------------------------------------------------ */
 
 .signupPage {
+  height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 1px solid lightgrey;
+  border-top: 0.5px solid lightgrey;
 }
 .signupForm {
   display: flex;
   flex-direction: column;
-  /* width: 400px; */
-  margin: auto;
+  align-items: center;
+}
+.signupForm > div {
+  display: flex;
+  gap: 40px;
+}
+.signupCol1 {
   width: 270px;
 }
 .signupForm input {
   width: 400px;
 }
-/* .signupPage form {
-  width: 270px;
-} */
 .signupPage input {
   border: none;
   border-bottom: 1px solid #fcced3;
@@ -357,6 +362,45 @@ input[type="number"] {
   color: #999999;
   width: 100%;
 }
+.signupCol2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+}
+.signupCol2 input {
+  border-bottom: none;
+  display: none;
+}
+.signupCol2 span {
+  cursor: pointer;
+  border: 1px solid var(--blueVinted);
+  color: var(--blueVinted);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.avatar {
+  position: relative;
+}
+.avatarPreview {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.deleteAvatar {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: var(--blueVinted);
+  background-color: rgba(218, 216, 216, 0.795);
+  /* border: 1px solid var(--blueVinted); */
+}
 .signupPage p {
   font-size: 12px;
   margin: 20px 0;
@@ -365,13 +409,13 @@ input[type="number"] {
 .signupPage input[type="submit"] {
   background-color: var(--blueVinted);
   height: 40px;
+  width: 50%;
   border: none;
   border-radius: 5px;
   color: white;
   font-family: inherit;
   font-size: inherit;
   margin-top: 30px;
-  /* cursor: pointer; */
 }
 
 /* ---------------------------------------- */
@@ -379,10 +423,11 @@ input[type="number"] {
 /* ------------------------------------------------ */
 
 .loginPage {
+  height: calc(100vh - 200px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 1px solid lightgrey;
+  border-top: 0.5px solid lightgrey;
 }
 .loginPage form {
   display: flex;
@@ -511,7 +556,7 @@ input[type="number"] {
 
 .paymentPage {
   background-color: #ebedee;
-  height: 100vh;
+  height: calc(100vh - 200px);
   padding-top: 50px;
 }
 .commande {
@@ -553,6 +598,7 @@ input[type="number"] {
   padding-bottom: 30px;
   border-bottom: 1px solid lightgrey;
   text-align: center;
+  line-height: 20px;
 }
 .commande form p span {
   font-weight: bold;
@@ -563,7 +609,7 @@ input[type="number"] {
   padding: 10px;
 }
 .commande form input[type="submit"] {
-  background-color: #02c06d;
+  background-color: var(--blueVinted);
   color: white;
   border: none;
   border-radius: 5px;
@@ -573,14 +619,17 @@ input[type="number"] {
   font-weight: bold;
   font-size: inherit;
   margin-top: 30px;
-  /* cursor: pointer; */
+}
+.paymentValidContainer {
+  height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .paymentValid {
   border-radius: 5px;
   height: 100px;
   width: 200px;
-  margin: auto;
-  margin-top: 80px;
   padding: 20px;
   background-color: var(--blueVinted);
   color: white;
@@ -599,6 +648,22 @@ input[type="number"] {
 }
 .paymentValid a {
   font-weight: bold;
+}
+
+/* ------------------------------------------------ */
+/* FOOTER */
+/* ------------------------------------------------ */
+footer {
+  border-top: 0.5px solid rgb(214, 212, 212);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+footer a {
+  font-weight: bold;
+  color: var(--blueVinted);
 }
 
 /* ------------------------------------------------ */
@@ -836,6 +901,12 @@ input[type="number"] {
   .commande form p {
     font-size: 14px;
   }
+  .paymentPage {
+    height: calc(100vh - 150px);
+  }
+  .paymentValidContainer {
+    height: calc(100vh - 350px);
+  }
 
   /* max 819px --- PUBLISH PAGE */
   .container {
@@ -939,13 +1010,18 @@ input[type="number"] {
   .commande form {
     padding-top: 25px;
   }
-
   .totalPayment {
     margin-bottom: 35px;
   }
   .commande form p {
     font-size: 12px;
     padding-bottom: 20px;
+  }
+  .paymentPage {
+    height: calc(100vh - 230px);
+  }
+  .paymentValidContainer {
+    height: calc(100vh - 350px);
   }
 
   /* max 516px --- PUBLISH PAGE */

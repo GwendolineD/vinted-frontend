@@ -3,6 +3,7 @@ import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import Cookies from "js-cookie";
+import { RotatingLines } from "react-loader-spinner";
 
 const Publish = () => {
   const [title, setTitle] = useState("");
@@ -16,6 +17,7 @@ const Publish = () => {
   const [picture, setPicture] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -23,39 +25,53 @@ const Publish = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (
+      picture &&
+      title &&
+      description &&
+      price &&
+      condition &&
+      city &&
+      brand &&
+      size &&
+      color
+    ) {
+      try {
+        setIsLoading(true);
 
-    try {
-      setIsLoading(true);
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("price", price);
+        formData.append("condition", condition);
+        formData.append("city", city);
+        formData.append("brand", brand);
+        formData.append("size", size);
+        formData.append("color", color);
+        formData.append("picture", picture);
 
-      const formData = new FormData();
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("price", price);
-      formData.append("condition", condition);
-      formData.append("city", city);
-      formData.append("brand", brand);
-      formData.append("size", size);
-      formData.append("color", color);
-      formData.append("picture", picture);
+        const response = await axios.post(
+          "https://vintedlereacteur.herokuapp.com/offer/publish",
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        // console.log(response.data);
 
-      const response = await axios.post(
-        "https://vintedlereacteur.herokuapp.com/offer/publish",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        if (response.data._id) {
+          navigate(`/offer/${response.data._id}`);
         }
-      );
-      // console.log(response.data);
-
-      if (response.data._id) {
-        setIsLoading(false);
-        navigate(`/offer/${response.data._id}`);
+      } catch (error) {
+        console.log("Catch Publish >>>>>", error.response);
+        setErrorMessage("La création a échouée, veuillez réessayer.");
       }
-    } catch (error) {
-      console.log("Catch Publish >>>>>", error.response);
+    } else {
+      setErrorMessage("Veuillez remplir tous les champs.");
     }
+    setIsLoading(false);
   };
 
   // DropZone package
@@ -72,6 +88,7 @@ const Publish = () => {
         console.log(binaryStr);
       };
       reader.readAsArrayBuffer(file);
+      setErrorMessage("");
     });
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -95,7 +112,7 @@ const Publish = () => {
                   setPreview(null);
                 }}
                 src={preview}
-                alt="Prévisualisation de l'image"
+                alt="Prévisualisation"
               />
             )}
           </div>
@@ -105,7 +122,10 @@ const Publish = () => {
             <div>
               <span>Titre</span>
               <input
-                onChange={(event) => setTitle(event.target.value)}
+                onChange={(event) => {
+                  setTitle(event.target.value);
+                  setErrorMessage("");
+                }}
                 type="text"
                 placeholder="ex: Chemise Sézane verte"
               />
@@ -117,7 +137,10 @@ const Publish = () => {
                 className="textarea"
                 row="16"
                 cols="70"
-                onChange={(event) => setDescription(event.target.value)}
+                onChange={(event) => {
+                  setDescription(event.target.value);
+                  setErrorMessage("");
+                }}
                 placeholder="ex: porté quelques fois, taille correctement"
               ></textarea>
             </div>
@@ -127,7 +150,10 @@ const Publish = () => {
             <div>
               <span>Marque</span>
               <input
-                onChange={(event) => setBrand(event.target.value)}
+                onChange={(event) => {
+                  setBrand(event.target.value);
+                  setErrorMessage("");
+                }}
                 type="text"
                 placeholder="ex: Zara"
               />
@@ -136,7 +162,10 @@ const Publish = () => {
             <div>
               <span>Taille</span>
               <input
-                onChange={(event) => setSize(event.target.value)}
+                onChange={(event) => {
+                  setSize(event.target.value);
+                  setErrorMessage("");
+                }}
                 type="text"
                 placeholder="ex: L / 40 / 12"
               />
@@ -145,7 +174,10 @@ const Publish = () => {
             <div>
               <span>Couleur</span>
               <input
-                onChange={(event) => setColor(event.target.value)}
+                onChange={(event) => {
+                  setColor(event.target.value);
+                  setErrorMessage("");
+                }}
                 type="text"
                 placeholder="ex: Fushia"
               />
@@ -154,7 +186,10 @@ const Publish = () => {
             <div>
               <span>Etat</span>
               <input
-                onChange={(event) => setCondition(event.target.value)}
+                onChange={(event) => {
+                  setCondition(event.target.value);
+                  setErrorMessage("");
+                }}
                 type="text"
                 placeholder="ex: Neuf avec étiquette"
               />
@@ -163,7 +198,10 @@ const Publish = () => {
             <div>
               <span>Lieu</span>
               <input
-                onChange={(event) => setCity(event.target.value)}
+                onChange={(event) => {
+                  setCity(event.target.value);
+                  setErrorMessage("");
+                }}
                 type="text"
                 placeholder="ex: Paris"
               />
@@ -176,6 +214,7 @@ const Publish = () => {
               <input
                 onChange={(event) => {
                   setPrice(Number(event.target.value));
+                  setErrorMessage("");
                 }}
                 type="number"
                 placeholder="2,5"
@@ -189,16 +228,21 @@ const Publish = () => {
               </span>
             </div>
           </div>
-
+          {errorMessage && (
+            <p style={{ textAlign: "end", color: "#2cb1ba" }}>{errorMessage}</p>
+          )}
           <div>
-            {isLoading && <span>offer is uploading ...</span>}
-            <input type="submit" value="Ajouter" />
+            {isLoading ? (
+              <RotatingLines width="40" strokeColor="#2cb1ba" />
+            ) : (
+              <input type="submit" value="Ajouter" />
+            )}
           </div>
         </form>
       </div>
     </div>
   ) : (
-    <Navigate to="/login" state={{ fromPublish: true }} />
+    <Navigate to="/login" state={{ from: "/publish" }} />
   );
 };
 

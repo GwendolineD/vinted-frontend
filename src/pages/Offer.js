@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
+
+import avatar from "../assets/img/defaultAvatar.png";
 
 const Offer = () => {
   const { offerId } = useParams();
@@ -25,7 +28,10 @@ const Offer = () => {
   }, [offerId]);
 
   return isLoading ? (
-    <p>Page is downloading ...</p>
+    <div className="downloading">
+      Chargement de la page
+      <ThreeDots color="#2cb1ba" height={80} width={80} />
+    </div>
   ) : (
     <div className="app">
       <main className="mainOffer">
@@ -64,13 +70,17 @@ const Offer = () => {
 
             {/* Owner infos */}
             <div className="offerOwner">
-              {dataOffer.owner.account.avatar === undefined ? (
-                <span></span>
-              ) : (
+              {dataOffer.owner.account.avatar ? (
                 <img
                   className="offerOwnerAvatar"
                   src={dataOffer.owner.account.avatar.secure_url}
                   alt="user avatar"
+                />
+              ) : (
+                <img
+                  src={avatar}
+                  alt="avatar par défaut"
+                  className="homeOwnerAvatar"
                 />
               )}
               <span>{dataOffer.owner.account.username}</span>

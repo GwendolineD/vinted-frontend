@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { RotatingLines } from "react-loader-spinner";
 
 const CheckoutForm = ({ dataOffer }) => {
   const [paymentOK, setPaymentOK] = useState(false);
+  const [payementInAction, setPayementInAction] = useState(false);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -14,7 +16,7 @@ const CheckoutForm = ({ dataOffer }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setPayementInAction(true);
     try {
       const cardElement = elements.getElement(CardElement);
       const stripeResponse = await stripe.createToken(cardElement, {
@@ -38,15 +40,18 @@ const CheckoutForm = ({ dataOffer }) => {
     } catch (error) {
       console.log("Catch checkoutForm>>>>", error.apiResponse);
     }
+    setPayementInAction(false);
   };
 
   return paymentOK ? (
-    <div className="paymentValid app">
-      <div>
-        Votre paiement de <span>{total} €</span> pour l'achat de
-        <span>{dataOffer.product_name}</span> a été effectué avec succès!
+    <div className="paymentValidContainer">
+      <div className="paymentValid app">
+        <div>
+          Votre paiement de <span>{total} €</span> pour l'achat de{" "}
+          <span> {dataOffer.product_name}</span> a été effectué avec succès!
+        </div>
+        <Link to="/">Revenir aux offres</Link>
       </div>
-      <Link to="/">Revenir aux offres</Link>
     </div>
   ) : (
     <div className=" paymentPage app">
@@ -72,13 +77,19 @@ const CheckoutForm = ({ dataOffer }) => {
 
           <p>
             Il ne vous reste plus qu'une étape pour vous offrir
-            <span>{dataOffer.product_name}</span>. Vous allez payer
-            <span>{total} €</span> (frais de protection et frais de port inclus)
+            <span> {dataOffer.product_name}</span>. Vous allez payer
+            <span> {total} €</span> (frais de protection et frais de port
+            inclus)
           </p>
-
           <CardElement className="cardElement" />
 
-          <input type="submit" value="Pay" />
+          {payementInAction ? (
+            <div style={{ width: "100%", textAlign: "center", marginTop: 20 }}>
+              <RotatingLines width="30" strokeColor="#2cb1ba" />
+            </div>
+          ) : (
+            <input type="submit" value="Pay" />
+          )}
         </form>
       </div>
     </div>
