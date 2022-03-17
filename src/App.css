@@ -678,6 +678,7 @@ footer a {
   font-weight: bold;
   font-size: 28px;
   gap: 30px;
+  border-top: 0.5px solid lightgrey;
 }
 .notFoundPage p:last-child {
   font-weight: lighter;
@@ -963,7 +964,9 @@ footer a {
 /* max 819px --- downloading */
 .downloading {
   height: calc(100vh - 350px);
+  font-size: 18px;
 }
+
 /* ------------------------------------------------ */
 @media (max-width: 516px) {
   /* max 516px --- HEADER */
@@ -1091,13 +1094,20 @@ footer a {
     margin: auto;
     text-align: center;
   }
-}
 
-/* max 516x --- downloading */
-.downloading {
-  height: calc(100vh - 350px);
+  /* max 516x --- downloading */
+  .downloading {
+    height: calc(100vh - 350px);
+    font-size: 18px;
+  }
+  /* max 516x --- notfound Page */
+  .notFoundPage {
+    font-size: 20px;
+  }
+  .notFoundPage p:last-child {
+    font-size: 12px;
+  }
 }
-
 /* ------------------------------------------------ */
 @media (max-width: 675px) {
   /* max 675px --- OFFER PAGE */
