@@ -85,7 +85,7 @@ const Publish = () => {
         setPreview(URL.createObjectURL(file));
         setPicture(file);
         const binaryStr = reader.result;
-        console.log(binaryStr);
+        // console.log(binaryStr);
       };
       reader.readAsArrayBuffer(file);
       setErrorMessage("");

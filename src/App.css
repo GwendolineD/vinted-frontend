@@ -28,10 +28,10 @@ h1 {
   font-size: 50px;
   font-family: "Maison Neue Light", sans-serif;
   font-weight: bold;
-  text-align: center;
-  margin-top: calc((100vh - 200px) / 2);
+  height: calc(100vh - 200px);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 /* ------------------------------------------------ */
@@ -532,13 +532,13 @@ input[type="number"] {
   border-radius: 5px;
   color: #fff;
   padding: 5px 10px;
-  margin-bottom: 30px;
 }
 .publishPage form > div:last-child {
   margin-top: 40px;
   font-size: 18px;
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 30px;
 }
 .publishPage form > div:last-child span {
   color: var(--blueVinted);
