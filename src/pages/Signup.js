@@ -89,8 +89,9 @@ const Signup = ({ setToken }) => {
                 setPhone(event.target.value);
                 setErrorMessage("");
               }}
-              type="text"
-              placeholder="Téléphone"
+              type="tel"
+              pattern="[0]{1}[0-9]{9}"
+              placeholder="Téléphone (0678692645)"
               value={phone}
             />
 

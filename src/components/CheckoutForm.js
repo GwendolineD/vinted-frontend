@@ -58,29 +58,32 @@ const CheckoutForm = ({ dataOffer }) => {
       <div className="commande">
         <h4>Résumé de la commande</h4>
 
-        <div className="recap">
-          <span>Commande</span> <span>{dataOffer.product_price} €</span>
+        <div>
+          <div className="recap">
+            <span>Commande</span> <span>{dataOffer.product_price} €</span>
+          </div>
+
+          <div className="recap">
+            <span>Frais protection acheteurs</span> <span>0.40 €</span>
+          </div>
+
+          <div className="recap">
+            <span>Frais de port</span> <span>0.80 €</span>
+          </div>
         </div>
 
-        <div className="recap">
-          <span>Frais protection acheteurs</span> <span>0.40 €</span>
-        </div>
-
-        <div className="recap">
-          <span>Frais de port</span> <span>0.80 €</span>
+        <div className="totalPayment">
+          <span>Total</span> <span>{total} €</span>
         </div>
 
         <form onSubmit={handleSubmit} className="app">
-          <div className="totalPayment">
-            <span>Total</span> <span>{total} €</span>
-          </div>
-
           <p>
             Il ne vous reste plus qu'une étape pour vous offrir
             <span> {dataOffer.product_name}</span>. Vous allez payer
             <span> {total} €</span> (frais de protection et frais de port
             inclus)
           </p>
+
           <CardElement className="cardElement" />
 
           {payementInAction ? (

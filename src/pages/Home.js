@@ -23,7 +23,7 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
           `https://vintedlereacteur.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sortChoice}`
         );
 
-        // console.log(response.data);
+        console.log("data>>>>>", response.data);
         setDataOffers(response.data);
         setIsLoading(false);
       };
@@ -67,7 +67,7 @@ const Home = ({ search, priceMax, priceMin, sort }) => {
               <Link to={`/offer/${offer._id}`}>
                 {/* owner's infos */}
                 <div className="homeUser">
-                  {offer.owner.account.avatar ? (
+                  {offer.owner?.account.avatar ? (
                     <img
                       className="homeOwnerAvatar"
                       src={offer.owner.account.avatar.secure_url}

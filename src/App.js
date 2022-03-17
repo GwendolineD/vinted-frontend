@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Publish from "./pages/Publish";
 import Payment from "./pages/Payment";
 import Footer from "./components/Footer";
+import NotFound from "./pages/NotFoundPage";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -51,6 +52,7 @@ function App() {
         <Route path="/offer/:offerId" element={<Offer />} />
         <Route path="/publish" element={<Publish token={token} />} />
         <Route path="/payment" element={<Payment token={token} />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
