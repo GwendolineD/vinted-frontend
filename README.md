@@ -6,6 +6,7 @@
   <h1> Vinted Clone </h1>
 </div>
   
+[![Image alt text](./src/assets/img/logo-vinted.png)](./src/assets/VintedRecord.gif)
 
 ## 🖥 Features
 
@@ -16,8 +17,8 @@
 - Publish an offer
 - User's and offer's data are stored in a MongoDB database (to see backend repository, click <a href="https://github.com/GwendolineD/vinted-Le-Reacteur" target="_blank">here</a>)
 
-
 ### Features to come :
+
 - Upgrade to react 18
 - Publish an offer with multiples pictures
 - Use price-range package
@@ -34,10 +35,9 @@
   <img width="500"  src="https://res.cloudinary.com/du3ko16j1/image/upload/v1647596308/vinted/Capture_d_e%CC%81cran_2022-03-18_a%CC%80_10.33.27_jzk2ry.png">
 </div>
 
-
 ## 🛠 Technologies, packages ...
 
-- React 
+- React
 - React-router-dom
 - react-dropzone
 - react-loader-spinner
@@ -48,18 +48,21 @@
 
 ## 👀 Run the project
 
-Clone the repository : 
+Clone the repository :
+
 ```
 git clone https://github.com/GwendolineD/vinted-frontend.git
 cd vintend-frontend
 ```
 
-Install the dependencies : 
+Install the dependencies :
+
 ```
 yarn install
 ```
 
-Then run the project : 
+Then run the project :
+
 ```
 yarn start
 ```
