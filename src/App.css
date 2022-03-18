@@ -484,7 +484,6 @@ input[type="number"] {
 }
 .publishPage form > div > div {
   display: flex;
-  /* align-items: center; */
   padding-bottom: 20px;
   justify-content: space-between;
   line-height: 40px;
@@ -494,7 +493,7 @@ input[type="number"] {
 }
 .publishPage form > div > div input {
   font-size: inherit;
-  color: lightgrey;
+  color: grey;
   margin-right: 20px;
   width: 600px;
   height: 45px;
@@ -502,13 +501,19 @@ input[type="number"] {
   border-bottom: 1px solid lightgrey;
   background-color: #fff;
 }
+.publishPage form > div > div input::placeholder {
+  color: lightgrey;
+}
 .textarea {
   padding-top: 10px;
   border: none;
-  color: lightgrey;
+  color: grey;
   font-family: inherit;
   border-bottom: 1px solid lightgrey;
   height: 120px;
+}
+.textarea::placeholder {
+  color: lightgrey;
 }
 .publishPage form > div:first-child {
   height: 250px;
