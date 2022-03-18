@@ -6,6 +6,11 @@
   <h1> Vinted Clone </h1>
 </div>
   
+  
+<div align="center">
+  <img src="./src/assets/VintedRecord2.gif" width="600">
+</div>
+
 
 ## 🖥 Features
 
