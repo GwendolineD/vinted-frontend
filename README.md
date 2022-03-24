@@ -21,11 +21,6 @@
 - Publish an offer
 - User's and offer's data are stored in a MongoDB database (to see backend repository, click <a href="https://github.com/GwendolineD/vinted-Le-Reacteur" target="_blank">here</a>)
 
-### Features to come :
-
-- Upgrade to react 18
-- Publish an offer with multiples pictures
-- Use price-range package
 
 ## 📸 Screen shots
 
